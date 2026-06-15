@@ -1,15 +1,15 @@
-APP: Album Mundial 2026 Tracker v2
+APP: Album Mundial 2026 Tracker v3
 
 QUE CAMBIO EN ESTA VERSION
 - Ya no usa lista generica 001-980.
 - Usa codigos reales/mixtos del album:
-  - 00
+  - 000
   - FWC1 a FWC19
   - Equipos con codigo de 3 letras, por ejemplo ARG17, USA5, MEX10
   - Coca-Cola CC1 a CC12 como bonus
 - La completicion principal se calcula sobre el album base de 980.
 - Coca-Cola aparece como bonus separado, para no dañar el porcentaje base.
-- Puedes escribir codigos con espacios: FWC 1, ARG 17, CC 1.
+- Puedes escribir codigos con espacios: FWC 1, COL 17, ARG 17, CC 1. Tambien puedes buscar 000 o 00.
 - Puedes agregar codigos especiales manualmente si aparecen variaciones regionales.
 
 ARCHIVOS
@@ -19,7 +19,7 @@ ARCHIVOS
 - icon.svg: icono.
 - google_apps_script_code.gs: backend para Google Sheets.
 - sample_stickers_import.csv: ejemplo pequeno para importar.
-- official_stickers_template.csv: plantilla base con 00, FWC1-FWC19, equipos y CC1-CC12.
+- official_stickers_template.csv: plantilla base con 000, FWC1-FWC19, equipos y CC1-CC12.
 
 COMO ACTUALIZAR EN GITHUB PAGES SI YA TIENES LA VERSION ANTERIOR
 1. Descomprime este ZIP.
@@ -72,7 +72,7 @@ COMO EXPORTAR PDF
 7. En iPhone/Android usa la opcion Guardar como PDF si aparece.
 
 CODIGOS QUE RECONOCE
-- 00: Panini Logo.
+- 000: Panini Logo. Si escribes 00 o 0, la app lo interpreta como 000.
 - FWC1-FWC8: intro / especiales del torneo.
 - FWC9-FWC19: FIFA World Cup History / FIFA Museum.
 - ARG17, USA5, MEX10, etc.: equipo + numero.

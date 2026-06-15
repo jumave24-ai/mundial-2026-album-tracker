@@ -423,7 +423,7 @@
           <div class="toolbar">
             <div>
               <label for="searchInput">Buscar por número, equipo o nombre</label>
-              <input id="searchInput" type="search" placeholder="Ej. 001, Colombia, Messi..." />
+              <input id="searchInput" type="search" placeholder="Ej. 000, 00, Colombia, COL, FWC, CC..." />
             </div>
             <div>
               <label for="sectionFilter">Sección</label>
@@ -446,12 +446,12 @@
             <button class="pill" data-filter="duplicates">Repetidas</button>
           </div>
           <div class="notice small" style="margin-top:12px">
-            La app reconoce códigos como <b>00</b>, <b>FWC1</b>, <b>ARG17</b>, <b>USA5</b> y <b>CC1</b>. También acepta espacios: FWC 1, ARG 17, CC 1.
+            La app reconoce códigos como <b>000</b>, <b>00</b>, <b>FWC1</b>, <b>COL17</b>, <b>ARG17</b>, <b>USA5</b> y <b>CC1</b>. También acepta espacios: FWC 1, COL 17, ARG 17, CC 1.
           </div>
           <div class="two-col" style="margin-top:12px">
             <div>
               <label for="quickCodeInput">Agregar o buscar código rápido</label>
-              <input id="quickCodeInput" placeholder="Ej. 00, FWC 19, CC1, ARG17" />
+              <input id="quickCodeInput" placeholder="Ej. 000, 00, FWC 19, CC1, COL17" />
             </div>
             <div>
               <label for="quickNameInput">Nombre/nota opcional</label>
@@ -495,7 +495,7 @@
 
         <div class="card">
           <h2>Importar lista oficial o personalizada</h2>
-          <p class="small muted">La app trae la estructura base 2026: <b>00 + FWC1-FWC19 + 48 equipos x 20</b>, y también <b>CC1-CC12</b> de Coca-Cola como bonus. Si tienes una lista con nombres exactos, importa un CSV con columnas: <b>code, section, name, category</b>.</p>
+          <p class="small muted">La app trae la estructura base 2026: <b>000 + FWC1-FWC19 + 48 equipos x 20</b>, y también <b>CC1-CC12</b> de Coca-Cola como bonus. Si tienes una lista con nombres exactos, importa un CSV con columnas: <b>code, section, name, category</b>.</p>
           <div class="button-row">
             <label class="file-label" for="csvFile">Seleccionar CSV</label>
             <input id="csvFile" type="file" accept=".csv,text/csv" style="display:none" />
@@ -597,8 +597,8 @@
   <iframe name="hiddenSaveFrame" id="hiddenSaveFrame" style="display:none"></iframe>
 
   <script>
-    const STORAGE_KEY = 'wc26_album_tracker_state_v2';
-    const OLD_STORAGE_KEY = 'wc26_album_tracker_state_v1';
+    const STORAGE_KEY = 'wc26_album_tracker_state_v3';
+    const OLD_STORAGE_KEY = 'wc26_album_tracker_state_v2';
     const DEFAULT_TOTAL = 980;
     const DEFAULT_PAD = 3;
 
@@ -619,7 +619,7 @@
     const TEAM_MAP = Object.fromEntries(TEAM_CODES);
 
     const FWC_NAMES = {
-      '00': 'Panini Logo',
+      '000': 'Panini Logo',
       FWC1: 'Official Emblem', FWC2: 'Official Emblem', FWC3: 'Official Mascots', FWC4: 'Official Slogan',
       FWC5: 'Official Ball', FWC6: 'Canada - Host Countries & Cities', FWC7: 'Mexico - Host Countries & Cities', FWC8: 'USA - Host Countries & Cities',
       FWC9: 'Italy 1934 - FIFA Museum', FWC10: 'Uruguay 1950 - FIFA Museum', FWC11: 'West Germany 1954 - FIFA Museum',
@@ -661,21 +661,44 @@
       code = code.replace(/\s+/g, '');
       code = code.replace(/^CC[-_]?/i, 'CC');
       code = code.replace(/^FWC[-_]?/i, 'FWC');
-      if (code === '0') return '00';
-      if (/^\d{1,3}$/.test(code) && code !== '00') return padCode(Number(code), DEFAULT_PAD);
+      // Album cover/logo sticker: users may type 0, 00 or 000; store it as 000.
+      if (code === '0' || code === '00' || code === '000') return '000';
+      if (/^\d{1,3}$/.test(code)) {
+        const n = Number(code);
+        if (n === 0) return '000';
+        return padCode(n, DEFAULT_PAD);
+      }
       return code;
+    }
+
+    function normalizeSearchText(text) {
+      return String(text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .trim();
+    }
+
+    function stickerSearchText(s) {
+      const parts = [s.code, s.section, s.name, s.category];
+      if (s.code === '000') parts.push('00', '0', 'panini logo', 'logo');
+      if (s.code && s.code.startsWith('FWC')) parts.push('fifa world cup history', 'world cup history', 'historia mundial');
+      if (s.code && s.code.startsWith('CC')) parts.push('coca cola', 'coca-cola', 'coke');
+      const prefix = String(s.code || '').slice(0, 3);
+      if (TEAM_MAP[prefix]) parts.push(prefix, TEAM_MAP[prefix]);
+      return normalizeSearchText(parts.join(' '));
     }
 
     function detectStickerMeta(code, section = '', name = '', category = '') {
       const clean = normalizeCode(code);
       const prefix3 = clean.slice(0, 3);
       const isCocaCola = /^CC/.test(clean);
-      const isFWC = clean === '00' || /^FWC\d+$/i.test(clean);
+      const isFWC = clean === '000' || /^FWC\d+$/i.test(clean);
       const isTeam = !!TEAM_MAP[prefix3] && /^([A-Z]{3})\d{1,2}$/.test(clean);
       const detectedCategory = category || (isCocaCola ? 'bonus' : 'base');
       let detectedSection = section;
       if (!detectedSection || detectedSection === 'Album') {
-        if (clean === '00') detectedSection = 'Intro / FWC';
+        if (clean === '000') detectedSection = 'Intro / FWC';
         else if (/^FWC([1-8])$/.test(clean)) detectedSection = 'Intro / FWC';
         else if (/^FWC(9|1[0-9])$/.test(clean)) detectedSection = 'FIFA World Cup History';
         else if (isCocaCola) detectedSection = 'Coca-Cola';
@@ -698,7 +721,7 @@
 
     function makeDefaultStickers() {
       const list = [];
-      list.push({ code: '00', section: 'Intro / FWC', name: FWC_NAMES['00'], category: 'base' });
+      list.push({ code: '000', section: 'Intro / FWC', name: FWC_NAMES['000'], category: 'base' });
       for (let i = 1; i <= 19; i++) {
         const code = `FWC${i}`;
         const meta = detectStickerMeta(code, '', FWC_NAMES[code] || '', 'base');
@@ -731,7 +754,8 @@
     }
 
     function loadLocal() {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      // Prefer the new v3 state. If it does not exist, migrate v2 if present.
+      const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(OLD_STORAGE_KEY);
       if (!raw) {
         state.stickers = makeDefaultStickers();
         state.total = state.stickers.filter(s => s.category !== 'bonus').length;
@@ -867,7 +891,7 @@
     function compareStickers(a, b) {
       const rank = c => {
         c = normalizeCode(c);
-        if (c === '00') return [0, 0, ''];
+        if (c === '000') return [0, 0, ''];
         if (/^FWC\d+$/.test(c)) return [1, Number(c.replace('FWC','')), ''];
         const p = c.slice(0, 3);
         const teamIndex = TEAM_CODES.findIndex(([code]) => code === p);
@@ -881,9 +905,9 @@
     }
 
     function getVisibleStickers() {
-      const term = state.search.trim().toLowerCase();
+      const term = normalizeSearchText(state.search);
       let list = state.stickers.filter(s => {
-        const matchesTerm = !term || [s.code, s.section, s.name].join(' ').toLowerCase().includes(term);
+        const matchesTerm = !term || stickerSearchText(s).includes(term) || normalizeCode(term).toLowerCase() === String(s.code).toLowerCase();
         const matchesSection = state.sectionFilter === 'all' || s.section === state.sectionFilter;
         const matchesFilter = state.activeFilter === 'all'
           || (state.activeFilter === 'missing' && !s.pasted)
@@ -1121,14 +1145,14 @@
     }
 
     function downloadSampleCsv() {
-      const sample = `code,section,name,category\n00,Intro / FWC,Panini Logo,base\nFWC1,Intro / FWC,Official Emblem,base\nFWC19,FIFA World Cup History,Argentina 2022 - FIFA Museum,base\nARG17,Argentina,Argentina sticker 17,base\nUSA5,USA,USA sticker 5,base\nCC1,Coca-Cola,Lamine Yamal - Spain,bonus`;
+      const sample = `code,section,name,category\n000,Intro / FWC,Panini Logo,base\nFWC1,Intro / FWC,Official Emblem,base\nFWC19,FIFA World Cup History,Argentina 2022 - FIFA Museum,base\nARG17,Argentina,Argentina sticker 17,base\nUSA5,USA,USA sticker 5,base\nCC1,Coca-Cola,Lamine Yamal - Spain,bonus`;
       downloadText('sample_stickers_import.csv', sample, 'text/csv');
     }
 
     function quickAddOrUpdate() {
       const rawCode = byId('quickCodeInput').value;
       const code = normalizeCode(rawCode);
-      if (!code) { alert('Escribe un código, por ejemplo 00, FWC19, CC1 o ARG17.'); return; }
+      if (!code) { alert('Escribe un código, por ejemplo 000, FWC19, CC1 o COL17.'); return; }
       const note = byId('quickNameInput').value.trim();
       const idx = state.stickers.findIndex(s => s.code === code);
       if (idx >= 0) {
@@ -1276,7 +1300,7 @@
       saveLocal();
       saveSettingsRemote();
       render();
-      alert('Lista oficial/base actualizada: 00 + FWC1-FWC19 + equipos + CC1-CC12. No se borró lo que ya tenías marcado.');
+      alert('Lista oficial/base actualizada: 000 + FWC1-FWC19 + equipos + CC1-CC12. No se borró lo que ya tenías marcado.');
     }
 
     function escapeHtml(text) {
