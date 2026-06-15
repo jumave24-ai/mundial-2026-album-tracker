@@ -1,10 +1,7 @@
-code,section,name
-001,Intro,Logo oficial
-002,Intro,Mascota
-003,Intro,Balón oficial
-ARG01,Argentina,Escudo
-ARG02,Argentina,Jugador 1
-COL01,Colombia,Escudo
-COL02,Colombia,Jugador 1
-USA01,United States,Escudo
-USA02,United States,Jugador 1
+code,section,name,category
+00,Intro / FWC,Panini Logo,base
+FWC1,Intro / FWC,Official Emblem,base
+FWC19,FIFA World Cup History,Argentina 2022 - FIFA Museum,base
+ARG17,Argentina,Argentina sticker 17,base
+USA5,USA,USA sticker 5,base
+CC1,Coca-Cola,Lamine Yamal - Spain,bonus

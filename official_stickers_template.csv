@@ -1,0 +1,993 @@
+code,section,name,category
+00,Intro / FWC,Panini Logo,base
+FWC1,Intro / FWC,Official Emblem,base
+FWC2,Intro / FWC,Official Emblem,base
+FWC3,Intro / FWC,Official Mascots,base
+FWC4,Intro / FWC,Official Slogan,base
+FWC5,Intro / FWC,Official Ball,base
+FWC6,Intro / FWC,Canada - Host Countries & Cities,base
+FWC7,Intro / FWC,Mexico - Host Countries & Cities,base
+FWC8,Intro / FWC,USA - Host Countries & Cities,base
+FWC9,FIFA World Cup History,Italy 1934 - FIFA Museum,base
+FWC10,FIFA World Cup History,Uruguay 1950 - FIFA Museum,base
+FWC11,FIFA World Cup History,West Germany 1954 - FIFA Museum,base
+FWC12,FIFA World Cup History,Brazil 1962 - FIFA Museum,base
+FWC13,FIFA World Cup History,West Germany 1974 - FIFA Museum,base
+FWC14,FIFA World Cup History,Argentina 1986 - FIFA Museum,base
+FWC15,FIFA World Cup History,Brazil 1994 - FIFA Museum,base
+FWC16,FIFA World Cup History,Brazil 2002 - FIFA Museum,base
+FWC17,FIFA World Cup History,Italy 2006 - FIFA Museum,base
+FWC18,FIFA World Cup History,Germany 2014 - FIFA Museum,base
+FWC19,FIFA World Cup History,Argentina 2022 - FIFA Museum,base
+MEX1,Mexico,Team Logo - Mexico,base
+MEX2,Mexico,Mexico sticker 2,base
+MEX3,Mexico,Mexico sticker 3,base
+MEX4,Mexico,Mexico sticker 4,base
+MEX5,Mexico,Mexico sticker 5,base
+MEX6,Mexico,Mexico sticker 6,base
+MEX7,Mexico,Mexico sticker 7,base
+MEX8,Mexico,Mexico sticker 8,base
+MEX9,Mexico,Mexico sticker 9,base
+MEX10,Mexico,Mexico sticker 10,base
+MEX11,Mexico,Mexico sticker 11,base
+MEX12,Mexico,Mexico sticker 12,base
+MEX13,Mexico,Team Photo - Mexico,base
+MEX14,Mexico,Mexico sticker 14,base
+MEX15,Mexico,Mexico sticker 15,base
+MEX16,Mexico,Mexico sticker 16,base
+MEX17,Mexico,Mexico sticker 17,base
+MEX18,Mexico,Mexico sticker 18,base
+MEX19,Mexico,Mexico sticker 19,base
+MEX20,Mexico,Mexico sticker 20,base
+RSA1,South Africa,Team Logo - South Africa,base
+RSA2,South Africa,South Africa sticker 2,base
+RSA3,South Africa,South Africa sticker 3,base
+RSA4,South Africa,South Africa sticker 4,base
+RSA5,South Africa,South Africa sticker 5,base
+RSA6,South Africa,South Africa sticker 6,base
+RSA7,South Africa,South Africa sticker 7,base
+RSA8,South Africa,South Africa sticker 8,base
+RSA9,South Africa,South Africa sticker 9,base
+RSA10,South Africa,South Africa sticker 10,base
+RSA11,South Africa,South Africa sticker 11,base
+RSA12,South Africa,South Africa sticker 12,base
+RSA13,South Africa,Team Photo - South Africa,base
+RSA14,South Africa,South Africa sticker 14,base
+RSA15,South Africa,South Africa sticker 15,base
+RSA16,South Africa,South Africa sticker 16,base
+RSA17,South Africa,South Africa sticker 17,base
+RSA18,South Africa,South Africa sticker 18,base
+RSA19,South Africa,South Africa sticker 19,base
+RSA20,South Africa,South Africa sticker 20,base
+KOR1,South Korea,Team Logo - South Korea,base
+KOR2,South Korea,South Korea sticker 2,base
+KOR3,South Korea,South Korea sticker 3,base
+KOR4,South Korea,South Korea sticker 4,base
+KOR5,South Korea,South Korea sticker 5,base
+KOR6,South Korea,South Korea sticker 6,base
+KOR7,South Korea,South Korea sticker 7,base
+KOR8,South Korea,South Korea sticker 8,base
+KOR9,South Korea,South Korea sticker 9,base
+KOR10,South Korea,South Korea sticker 10,base
+KOR11,South Korea,South Korea sticker 11,base
+KOR12,South Korea,South Korea sticker 12,base
+KOR13,South Korea,Team Photo - South Korea,base
+KOR14,South Korea,South Korea sticker 14,base
+KOR15,South Korea,South Korea sticker 15,base
+KOR16,South Korea,South Korea sticker 16,base
+KOR17,South Korea,South Korea sticker 17,base
+KOR18,South Korea,South Korea sticker 18,base
+KOR19,South Korea,South Korea sticker 19,base
+KOR20,South Korea,South Korea sticker 20,base
+CZE1,Czechia,Team Logo - Czechia,base
+CZE2,Czechia,Czechia sticker 2,base
+CZE3,Czechia,Czechia sticker 3,base
+CZE4,Czechia,Czechia sticker 4,base
+CZE5,Czechia,Czechia sticker 5,base
+CZE6,Czechia,Czechia sticker 6,base
+CZE7,Czechia,Czechia sticker 7,base
+CZE8,Czechia,Czechia sticker 8,base
+CZE9,Czechia,Czechia sticker 9,base
+CZE10,Czechia,Czechia sticker 10,base
+CZE11,Czechia,Czechia sticker 11,base
+CZE12,Czechia,Czechia sticker 12,base
+CZE13,Czechia,Team Photo - Czechia,base
+CZE14,Czechia,Czechia sticker 14,base
+CZE15,Czechia,Czechia sticker 15,base
+CZE16,Czechia,Czechia sticker 16,base
+CZE17,Czechia,Czechia sticker 17,base
+CZE18,Czechia,Czechia sticker 18,base
+CZE19,Czechia,Czechia sticker 19,base
+CZE20,Czechia,Czechia sticker 20,base
+CAN1,Canada,Team Logo - Canada,base
+CAN2,Canada,Canada sticker 2,base
+CAN3,Canada,Canada sticker 3,base
+CAN4,Canada,Canada sticker 4,base
+CAN5,Canada,Canada sticker 5,base
+CAN6,Canada,Canada sticker 6,base
+CAN7,Canada,Canada sticker 7,base
+CAN8,Canada,Canada sticker 8,base
+CAN9,Canada,Canada sticker 9,base
+CAN10,Canada,Canada sticker 10,base
+CAN11,Canada,Canada sticker 11,base
+CAN12,Canada,Canada sticker 12,base
+CAN13,Canada,Team Photo - Canada,base
+CAN14,Canada,Canada sticker 14,base
+CAN15,Canada,Canada sticker 15,base
+CAN16,Canada,Canada sticker 16,base
+CAN17,Canada,Canada sticker 17,base
+CAN18,Canada,Canada sticker 18,base
+CAN19,Canada,Canada sticker 19,base
+CAN20,Canada,Canada sticker 20,base
+BIH1,Bosnia and Herzegovina,Team Logo - Bosnia and Herzegovina,base
+BIH2,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 2,base
+BIH3,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 3,base
+BIH4,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 4,base
+BIH5,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 5,base
+BIH6,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 6,base
+BIH7,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 7,base
+BIH8,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 8,base
+BIH9,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 9,base
+BIH10,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 10,base
+BIH11,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 11,base
+BIH12,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 12,base
+BIH13,Bosnia and Herzegovina,Team Photo - Bosnia and Herzegovina,base
+BIH14,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 14,base
+BIH15,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 15,base
+BIH16,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 16,base
+BIH17,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 17,base
+BIH18,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 18,base
+BIH19,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 19,base
+BIH20,Bosnia and Herzegovina,Bosnia and Herzegovina sticker 20,base
+QAT1,Qatar,Team Logo - Qatar,base
+QAT2,Qatar,Qatar sticker 2,base
+QAT3,Qatar,Qatar sticker 3,base
+QAT4,Qatar,Qatar sticker 4,base
+QAT5,Qatar,Qatar sticker 5,base
+QAT6,Qatar,Qatar sticker 6,base
+QAT7,Qatar,Qatar sticker 7,base
+QAT8,Qatar,Qatar sticker 8,base
+QAT9,Qatar,Qatar sticker 9,base
+QAT10,Qatar,Qatar sticker 10,base
+QAT11,Qatar,Qatar sticker 11,base
+QAT12,Qatar,Qatar sticker 12,base
+QAT13,Qatar,Team Photo - Qatar,base
+QAT14,Qatar,Qatar sticker 14,base
+QAT15,Qatar,Qatar sticker 15,base
+QAT16,Qatar,Qatar sticker 16,base
+QAT17,Qatar,Qatar sticker 17,base
+QAT18,Qatar,Qatar sticker 18,base
+QAT19,Qatar,Qatar sticker 19,base
+QAT20,Qatar,Qatar sticker 20,base
+SUI1,Switzerland,Team Logo - Switzerland,base
+SUI2,Switzerland,Switzerland sticker 2,base
+SUI3,Switzerland,Switzerland sticker 3,base
+SUI4,Switzerland,Switzerland sticker 4,base
+SUI5,Switzerland,Switzerland sticker 5,base
+SUI6,Switzerland,Switzerland sticker 6,base
+SUI7,Switzerland,Switzerland sticker 7,base
+SUI8,Switzerland,Switzerland sticker 8,base
+SUI9,Switzerland,Switzerland sticker 9,base
+SUI10,Switzerland,Switzerland sticker 10,base
+SUI11,Switzerland,Switzerland sticker 11,base
+SUI12,Switzerland,Switzerland sticker 12,base
+SUI13,Switzerland,Team Photo - Switzerland,base
+SUI14,Switzerland,Switzerland sticker 14,base
+SUI15,Switzerland,Switzerland sticker 15,base
+SUI16,Switzerland,Switzerland sticker 16,base
+SUI17,Switzerland,Switzerland sticker 17,base
+SUI18,Switzerland,Switzerland sticker 18,base
+SUI19,Switzerland,Switzerland sticker 19,base
+SUI20,Switzerland,Switzerland sticker 20,base
+BRA1,Brazil,Team Logo - Brazil,base
+BRA2,Brazil,Brazil sticker 2,base
+BRA3,Brazil,Brazil sticker 3,base
+BRA4,Brazil,Brazil sticker 4,base
+BRA5,Brazil,Brazil sticker 5,base
+BRA6,Brazil,Brazil sticker 6,base
+BRA7,Brazil,Brazil sticker 7,base
+BRA8,Brazil,Brazil sticker 8,base
+BRA9,Brazil,Brazil sticker 9,base
+BRA10,Brazil,Brazil sticker 10,base
+BRA11,Brazil,Brazil sticker 11,base
+BRA12,Brazil,Brazil sticker 12,base
+BRA13,Brazil,Team Photo - Brazil,base
+BRA14,Brazil,Brazil sticker 14,base
+BRA15,Brazil,Brazil sticker 15,base
+BRA16,Brazil,Brazil sticker 16,base
+BRA17,Brazil,Brazil sticker 17,base
+BRA18,Brazil,Brazil sticker 18,base
+BRA19,Brazil,Brazil sticker 19,base
+BRA20,Brazil,Brazil sticker 20,base
+MAR1,Morocco,Team Logo - Morocco,base
+MAR2,Morocco,Morocco sticker 2,base
+MAR3,Morocco,Morocco sticker 3,base
+MAR4,Morocco,Morocco sticker 4,base
+MAR5,Morocco,Morocco sticker 5,base
+MAR6,Morocco,Morocco sticker 6,base
+MAR7,Morocco,Morocco sticker 7,base
+MAR8,Morocco,Morocco sticker 8,base
+MAR9,Morocco,Morocco sticker 9,base
+MAR10,Morocco,Morocco sticker 10,base
+MAR11,Morocco,Morocco sticker 11,base
+MAR12,Morocco,Morocco sticker 12,base
+MAR13,Morocco,Team Photo - Morocco,base
+MAR14,Morocco,Morocco sticker 14,base
+MAR15,Morocco,Morocco sticker 15,base
+MAR16,Morocco,Morocco sticker 16,base
+MAR17,Morocco,Morocco sticker 17,base
+MAR18,Morocco,Morocco sticker 18,base
+MAR19,Morocco,Morocco sticker 19,base
+MAR20,Morocco,Morocco sticker 20,base
+HAI1,Haiti,Team Logo - Haiti,base
+HAI2,Haiti,Haiti sticker 2,base
+HAI3,Haiti,Haiti sticker 3,base
+HAI4,Haiti,Haiti sticker 4,base
+HAI5,Haiti,Haiti sticker 5,base
+HAI6,Haiti,Haiti sticker 6,base
+HAI7,Haiti,Haiti sticker 7,base
+HAI8,Haiti,Haiti sticker 8,base
+HAI9,Haiti,Haiti sticker 9,base
+HAI10,Haiti,Haiti sticker 10,base
+HAI11,Haiti,Haiti sticker 11,base
+HAI12,Haiti,Haiti sticker 12,base
+HAI13,Haiti,Team Photo - Haiti,base
+HAI14,Haiti,Haiti sticker 14,base
+HAI15,Haiti,Haiti sticker 15,base
+HAI16,Haiti,Haiti sticker 16,base
+HAI17,Haiti,Haiti sticker 17,base
+HAI18,Haiti,Haiti sticker 18,base
+HAI19,Haiti,Haiti sticker 19,base
+HAI20,Haiti,Haiti sticker 20,base
+SCO1,Scotland,Team Logo - Scotland,base
+SCO2,Scotland,Scotland sticker 2,base
+SCO3,Scotland,Scotland sticker 3,base
+SCO4,Scotland,Scotland sticker 4,base
+SCO5,Scotland,Scotland sticker 5,base
+SCO6,Scotland,Scotland sticker 6,base
+SCO7,Scotland,Scotland sticker 7,base
+SCO8,Scotland,Scotland sticker 8,base
+SCO9,Scotland,Scotland sticker 9,base
+SCO10,Scotland,Scotland sticker 10,base
+SCO11,Scotland,Scotland sticker 11,base
+SCO12,Scotland,Scotland sticker 12,base
+SCO13,Scotland,Team Photo - Scotland,base
+SCO14,Scotland,Scotland sticker 14,base
+SCO15,Scotland,Scotland sticker 15,base
+SCO16,Scotland,Scotland sticker 16,base
+SCO17,Scotland,Scotland sticker 17,base
+SCO18,Scotland,Scotland sticker 18,base
+SCO19,Scotland,Scotland sticker 19,base
+SCO20,Scotland,Scotland sticker 20,base
+USA1,USA,Team Logo - USA,base
+USA2,USA,USA sticker 2,base
+USA3,USA,USA sticker 3,base
+USA4,USA,USA sticker 4,base
+USA5,USA,USA sticker 5,base
+USA6,USA,USA sticker 6,base
+USA7,USA,USA sticker 7,base
+USA8,USA,USA sticker 8,base
+USA9,USA,USA sticker 9,base
+USA10,USA,USA sticker 10,base
+USA11,USA,USA sticker 11,base
+USA12,USA,USA sticker 12,base
+USA13,USA,Team Photo - USA,base
+USA14,USA,USA sticker 14,base
+USA15,USA,USA sticker 15,base
+USA16,USA,USA sticker 16,base
+USA17,USA,USA sticker 17,base
+USA18,USA,USA sticker 18,base
+USA19,USA,USA sticker 19,base
+USA20,USA,USA sticker 20,base
+PAR1,Paraguay,Team Logo - Paraguay,base
+PAR2,Paraguay,Paraguay sticker 2,base
+PAR3,Paraguay,Paraguay sticker 3,base
+PAR4,Paraguay,Paraguay sticker 4,base
+PAR5,Paraguay,Paraguay sticker 5,base
+PAR6,Paraguay,Paraguay sticker 6,base
+PAR7,Paraguay,Paraguay sticker 7,base
+PAR8,Paraguay,Paraguay sticker 8,base
+PAR9,Paraguay,Paraguay sticker 9,base
+PAR10,Paraguay,Paraguay sticker 10,base
+PAR11,Paraguay,Paraguay sticker 11,base
+PAR12,Paraguay,Paraguay sticker 12,base
+PAR13,Paraguay,Team Photo - Paraguay,base
+PAR14,Paraguay,Paraguay sticker 14,base
+PAR15,Paraguay,Paraguay sticker 15,base
+PAR16,Paraguay,Paraguay sticker 16,base
+PAR17,Paraguay,Paraguay sticker 17,base
+PAR18,Paraguay,Paraguay sticker 18,base
+PAR19,Paraguay,Paraguay sticker 19,base
+PAR20,Paraguay,Paraguay sticker 20,base
+AUS1,Australia,Team Logo - Australia,base
+AUS2,Australia,Australia sticker 2,base
+AUS3,Australia,Australia sticker 3,base
+AUS4,Australia,Australia sticker 4,base
+AUS5,Australia,Australia sticker 5,base
+AUS6,Australia,Australia sticker 6,base
+AUS7,Australia,Australia sticker 7,base
+AUS8,Australia,Australia sticker 8,base
+AUS9,Australia,Australia sticker 9,base
+AUS10,Australia,Australia sticker 10,base
+AUS11,Australia,Australia sticker 11,base
+AUS12,Australia,Australia sticker 12,base
+AUS13,Australia,Team Photo - Australia,base
+AUS14,Australia,Australia sticker 14,base
+AUS15,Australia,Australia sticker 15,base
+AUS16,Australia,Australia sticker 16,base
+AUS17,Australia,Australia sticker 17,base
+AUS18,Australia,Australia sticker 18,base
+AUS19,Australia,Australia sticker 19,base
+AUS20,Australia,Australia sticker 20,base
+TUR1,Türkiye,Team Logo - Türkiye,base
+TUR2,Türkiye,Türkiye sticker 2,base
+TUR3,Türkiye,Türkiye sticker 3,base
+TUR4,Türkiye,Türkiye sticker 4,base
+TUR5,Türkiye,Türkiye sticker 5,base
+TUR6,Türkiye,Türkiye sticker 6,base
+TUR7,Türkiye,Türkiye sticker 7,base
+TUR8,Türkiye,Türkiye sticker 8,base
+TUR9,Türkiye,Türkiye sticker 9,base
+TUR10,Türkiye,Türkiye sticker 10,base
+TUR11,Türkiye,Türkiye sticker 11,base
+TUR12,Türkiye,Türkiye sticker 12,base
+TUR13,Türkiye,Team Photo - Türkiye,base
+TUR14,Türkiye,Türkiye sticker 14,base
+TUR15,Türkiye,Türkiye sticker 15,base
+TUR16,Türkiye,Türkiye sticker 16,base
+TUR17,Türkiye,Türkiye sticker 17,base
+TUR18,Türkiye,Türkiye sticker 18,base
+TUR19,Türkiye,Türkiye sticker 19,base
+TUR20,Türkiye,Türkiye sticker 20,base
+GER1,Germany,Team Logo - Germany,base
+GER2,Germany,Germany sticker 2,base
+GER3,Germany,Germany sticker 3,base
+GER4,Germany,Germany sticker 4,base
+GER5,Germany,Germany sticker 5,base
+GER6,Germany,Germany sticker 6,base
+GER7,Germany,Germany sticker 7,base
+GER8,Germany,Germany sticker 8,base
+GER9,Germany,Germany sticker 9,base
+GER10,Germany,Germany sticker 10,base
+GER11,Germany,Germany sticker 11,base
+GER12,Germany,Germany sticker 12,base
+GER13,Germany,Team Photo - Germany,base
+GER14,Germany,Germany sticker 14,base
+GER15,Germany,Germany sticker 15,base
+GER16,Germany,Germany sticker 16,base
+GER17,Germany,Germany sticker 17,base
+GER18,Germany,Germany sticker 18,base
+GER19,Germany,Germany sticker 19,base
+GER20,Germany,Germany sticker 20,base
+CUW1,Curaçao,Team Logo - Curaçao,base
+CUW2,Curaçao,Curaçao sticker 2,base
+CUW3,Curaçao,Curaçao sticker 3,base
+CUW4,Curaçao,Curaçao sticker 4,base
+CUW5,Curaçao,Curaçao sticker 5,base
+CUW6,Curaçao,Curaçao sticker 6,base
+CUW7,Curaçao,Curaçao sticker 7,base
+CUW8,Curaçao,Curaçao sticker 8,base
+CUW9,Curaçao,Curaçao sticker 9,base
+CUW10,Curaçao,Curaçao sticker 10,base
+CUW11,Curaçao,Curaçao sticker 11,base
+CUW12,Curaçao,Curaçao sticker 12,base
+CUW13,Curaçao,Team Photo - Curaçao,base
+CUW14,Curaçao,Curaçao sticker 14,base
+CUW15,Curaçao,Curaçao sticker 15,base
+CUW16,Curaçao,Curaçao sticker 16,base
+CUW17,Curaçao,Curaçao sticker 17,base
+CUW18,Curaçao,Curaçao sticker 18,base
+CUW19,Curaçao,Curaçao sticker 19,base
+CUW20,Curaçao,Curaçao sticker 20,base
+CIV1,Ivory Coast,Team Logo - Ivory Coast,base
+CIV2,Ivory Coast,Ivory Coast sticker 2,base
+CIV3,Ivory Coast,Ivory Coast sticker 3,base
+CIV4,Ivory Coast,Ivory Coast sticker 4,base
+CIV5,Ivory Coast,Ivory Coast sticker 5,base
+CIV6,Ivory Coast,Ivory Coast sticker 6,base
+CIV7,Ivory Coast,Ivory Coast sticker 7,base
+CIV8,Ivory Coast,Ivory Coast sticker 8,base
+CIV9,Ivory Coast,Ivory Coast sticker 9,base
+CIV10,Ivory Coast,Ivory Coast sticker 10,base
+CIV11,Ivory Coast,Ivory Coast sticker 11,base
+CIV12,Ivory Coast,Ivory Coast sticker 12,base
+CIV13,Ivory Coast,Team Photo - Ivory Coast,base
+CIV14,Ivory Coast,Ivory Coast sticker 14,base
+CIV15,Ivory Coast,Ivory Coast sticker 15,base
+CIV16,Ivory Coast,Ivory Coast sticker 16,base
+CIV17,Ivory Coast,Ivory Coast sticker 17,base
+CIV18,Ivory Coast,Ivory Coast sticker 18,base
+CIV19,Ivory Coast,Ivory Coast sticker 19,base
+CIV20,Ivory Coast,Ivory Coast sticker 20,base
+ECU1,Ecuador,Team Logo - Ecuador,base
+ECU2,Ecuador,Ecuador sticker 2,base
+ECU3,Ecuador,Ecuador sticker 3,base
+ECU4,Ecuador,Ecuador sticker 4,base
+ECU5,Ecuador,Ecuador sticker 5,base
+ECU6,Ecuador,Ecuador sticker 6,base
+ECU7,Ecuador,Ecuador sticker 7,base
+ECU8,Ecuador,Ecuador sticker 8,base
+ECU9,Ecuador,Ecuador sticker 9,base
+ECU10,Ecuador,Ecuador sticker 10,base
+ECU11,Ecuador,Ecuador sticker 11,base
+ECU12,Ecuador,Ecuador sticker 12,base
+ECU13,Ecuador,Team Photo - Ecuador,base
+ECU14,Ecuador,Ecuador sticker 14,base
+ECU15,Ecuador,Ecuador sticker 15,base
+ECU16,Ecuador,Ecuador sticker 16,base
+ECU17,Ecuador,Ecuador sticker 17,base
+ECU18,Ecuador,Ecuador sticker 18,base
+ECU19,Ecuador,Ecuador sticker 19,base
+ECU20,Ecuador,Ecuador sticker 20,base
+NED1,Netherlands,Team Logo - Netherlands,base
+NED2,Netherlands,Netherlands sticker 2,base
+NED3,Netherlands,Netherlands sticker 3,base
+NED4,Netherlands,Netherlands sticker 4,base
+NED5,Netherlands,Netherlands sticker 5,base
+NED6,Netherlands,Netherlands sticker 6,base
+NED7,Netherlands,Netherlands sticker 7,base
+NED8,Netherlands,Netherlands sticker 8,base
+NED9,Netherlands,Netherlands sticker 9,base
+NED10,Netherlands,Netherlands sticker 10,base
+NED11,Netherlands,Netherlands sticker 11,base
+NED12,Netherlands,Netherlands sticker 12,base
+NED13,Netherlands,Team Photo - Netherlands,base
+NED14,Netherlands,Netherlands sticker 14,base
+NED15,Netherlands,Netherlands sticker 15,base
+NED16,Netherlands,Netherlands sticker 16,base
+NED17,Netherlands,Netherlands sticker 17,base
+NED18,Netherlands,Netherlands sticker 18,base
+NED19,Netherlands,Netherlands sticker 19,base
+NED20,Netherlands,Netherlands sticker 20,base
+JPN1,Japan,Team Logo - Japan,base
+JPN2,Japan,Japan sticker 2,base
+JPN3,Japan,Japan sticker 3,base
+JPN4,Japan,Japan sticker 4,base
+JPN5,Japan,Japan sticker 5,base
+JPN6,Japan,Japan sticker 6,base
+JPN7,Japan,Japan sticker 7,base
+JPN8,Japan,Japan sticker 8,base
+JPN9,Japan,Japan sticker 9,base
+JPN10,Japan,Japan sticker 10,base
+JPN11,Japan,Japan sticker 11,base
+JPN12,Japan,Japan sticker 12,base
+JPN13,Japan,Team Photo - Japan,base
+JPN14,Japan,Japan sticker 14,base
+JPN15,Japan,Japan sticker 15,base
+JPN16,Japan,Japan sticker 16,base
+JPN17,Japan,Japan sticker 17,base
+JPN18,Japan,Japan sticker 18,base
+JPN19,Japan,Japan sticker 19,base
+JPN20,Japan,Japan sticker 20,base
+SWE1,Sweden,Team Logo - Sweden,base
+SWE2,Sweden,Sweden sticker 2,base
+SWE3,Sweden,Sweden sticker 3,base
+SWE4,Sweden,Sweden sticker 4,base
+SWE5,Sweden,Sweden sticker 5,base
+SWE6,Sweden,Sweden sticker 6,base
+SWE7,Sweden,Sweden sticker 7,base
+SWE8,Sweden,Sweden sticker 8,base
+SWE9,Sweden,Sweden sticker 9,base
+SWE10,Sweden,Sweden sticker 10,base
+SWE11,Sweden,Sweden sticker 11,base
+SWE12,Sweden,Sweden sticker 12,base
+SWE13,Sweden,Team Photo - Sweden,base
+SWE14,Sweden,Sweden sticker 14,base
+SWE15,Sweden,Sweden sticker 15,base
+SWE16,Sweden,Sweden sticker 16,base
+SWE17,Sweden,Sweden sticker 17,base
+SWE18,Sweden,Sweden sticker 18,base
+SWE19,Sweden,Sweden sticker 19,base
+SWE20,Sweden,Sweden sticker 20,base
+TUN1,Tunisia,Team Logo - Tunisia,base
+TUN2,Tunisia,Tunisia sticker 2,base
+TUN3,Tunisia,Tunisia sticker 3,base
+TUN4,Tunisia,Tunisia sticker 4,base
+TUN5,Tunisia,Tunisia sticker 5,base
+TUN6,Tunisia,Tunisia sticker 6,base
+TUN7,Tunisia,Tunisia sticker 7,base
+TUN8,Tunisia,Tunisia sticker 8,base
+TUN9,Tunisia,Tunisia sticker 9,base
+TUN10,Tunisia,Tunisia sticker 10,base
+TUN11,Tunisia,Tunisia sticker 11,base
+TUN12,Tunisia,Tunisia sticker 12,base
+TUN13,Tunisia,Team Photo - Tunisia,base
+TUN14,Tunisia,Tunisia sticker 14,base
+TUN15,Tunisia,Tunisia sticker 15,base
+TUN16,Tunisia,Tunisia sticker 16,base
+TUN17,Tunisia,Tunisia sticker 17,base
+TUN18,Tunisia,Tunisia sticker 18,base
+TUN19,Tunisia,Tunisia sticker 19,base
+TUN20,Tunisia,Tunisia sticker 20,base
+BEL1,Belgium,Team Logo - Belgium,base
+BEL2,Belgium,Belgium sticker 2,base
+BEL3,Belgium,Belgium sticker 3,base
+BEL4,Belgium,Belgium sticker 4,base
+BEL5,Belgium,Belgium sticker 5,base
+BEL6,Belgium,Belgium sticker 6,base
+BEL7,Belgium,Belgium sticker 7,base
+BEL8,Belgium,Belgium sticker 8,base
+BEL9,Belgium,Belgium sticker 9,base
+BEL10,Belgium,Belgium sticker 10,base
+BEL11,Belgium,Belgium sticker 11,base
+BEL12,Belgium,Belgium sticker 12,base
+BEL13,Belgium,Team Photo - Belgium,base
+BEL14,Belgium,Belgium sticker 14,base
+BEL15,Belgium,Belgium sticker 15,base
+BEL16,Belgium,Belgium sticker 16,base
+BEL17,Belgium,Belgium sticker 17,base
+BEL18,Belgium,Belgium sticker 18,base
+BEL19,Belgium,Belgium sticker 19,base
+BEL20,Belgium,Belgium sticker 20,base
+EGY1,Egypt,Team Logo - Egypt,base
+EGY2,Egypt,Egypt sticker 2,base
+EGY3,Egypt,Egypt sticker 3,base
+EGY4,Egypt,Egypt sticker 4,base
+EGY5,Egypt,Egypt sticker 5,base
+EGY6,Egypt,Egypt sticker 6,base
+EGY7,Egypt,Egypt sticker 7,base
+EGY8,Egypt,Egypt sticker 8,base
+EGY9,Egypt,Egypt sticker 9,base
+EGY10,Egypt,Egypt sticker 10,base
+EGY11,Egypt,Egypt sticker 11,base
+EGY12,Egypt,Egypt sticker 12,base
+EGY13,Egypt,Team Photo - Egypt,base
+EGY14,Egypt,Egypt sticker 14,base
+EGY15,Egypt,Egypt sticker 15,base
+EGY16,Egypt,Egypt sticker 16,base
+EGY17,Egypt,Egypt sticker 17,base
+EGY18,Egypt,Egypt sticker 18,base
+EGY19,Egypt,Egypt sticker 19,base
+EGY20,Egypt,Egypt sticker 20,base
+IRI1,Iran,Team Logo - Iran,base
+IRI2,Iran,Iran sticker 2,base
+IRI3,Iran,Iran sticker 3,base
+IRI4,Iran,Iran sticker 4,base
+IRI5,Iran,Iran sticker 5,base
+IRI6,Iran,Iran sticker 6,base
+IRI7,Iran,Iran sticker 7,base
+IRI8,Iran,Iran sticker 8,base
+IRI9,Iran,Iran sticker 9,base
+IRI10,Iran,Iran sticker 10,base
+IRI11,Iran,Iran sticker 11,base
+IRI12,Iran,Iran sticker 12,base
+IRI13,Iran,Team Photo - Iran,base
+IRI14,Iran,Iran sticker 14,base
+IRI15,Iran,Iran sticker 15,base
+IRI16,Iran,Iran sticker 16,base
+IRI17,Iran,Iran sticker 17,base
+IRI18,Iran,Iran sticker 18,base
+IRI19,Iran,Iran sticker 19,base
+IRI20,Iran,Iran sticker 20,base
+NZL1,New Zealand,Team Logo - New Zealand,base
+NZL2,New Zealand,New Zealand sticker 2,base
+NZL3,New Zealand,New Zealand sticker 3,base
+NZL4,New Zealand,New Zealand sticker 4,base
+NZL5,New Zealand,New Zealand sticker 5,base
+NZL6,New Zealand,New Zealand sticker 6,base
+NZL7,New Zealand,New Zealand sticker 7,base
+NZL8,New Zealand,New Zealand sticker 8,base
+NZL9,New Zealand,New Zealand sticker 9,base
+NZL10,New Zealand,New Zealand sticker 10,base
+NZL11,New Zealand,New Zealand sticker 11,base
+NZL12,New Zealand,New Zealand sticker 12,base
+NZL13,New Zealand,Team Photo - New Zealand,base
+NZL14,New Zealand,New Zealand sticker 14,base
+NZL15,New Zealand,New Zealand sticker 15,base
+NZL16,New Zealand,New Zealand sticker 16,base
+NZL17,New Zealand,New Zealand sticker 17,base
+NZL18,New Zealand,New Zealand sticker 18,base
+NZL19,New Zealand,New Zealand sticker 19,base
+NZL20,New Zealand,New Zealand sticker 20,base
+ESP1,Spain,Team Logo - Spain,base
+ESP2,Spain,Spain sticker 2,base
+ESP3,Spain,Spain sticker 3,base
+ESP4,Spain,Spain sticker 4,base
+ESP5,Spain,Spain sticker 5,base
+ESP6,Spain,Spain sticker 6,base
+ESP7,Spain,Spain sticker 7,base
+ESP8,Spain,Spain sticker 8,base
+ESP9,Spain,Spain sticker 9,base
+ESP10,Spain,Spain sticker 10,base
+ESP11,Spain,Spain sticker 11,base
+ESP12,Spain,Spain sticker 12,base
+ESP13,Spain,Team Photo - Spain,base
+ESP14,Spain,Spain sticker 14,base
+ESP15,Spain,Spain sticker 15,base
+ESP16,Spain,Spain sticker 16,base
+ESP17,Spain,Spain sticker 17,base
+ESP18,Spain,Spain sticker 18,base
+ESP19,Spain,Spain sticker 19,base
+ESP20,Spain,Spain sticker 20,base
+CPV1,Cape Verde,Team Logo - Cape Verde,base
+CPV2,Cape Verde,Cape Verde sticker 2,base
+CPV3,Cape Verde,Cape Verde sticker 3,base
+CPV4,Cape Verde,Cape Verde sticker 4,base
+CPV5,Cape Verde,Cape Verde sticker 5,base
+CPV6,Cape Verde,Cape Verde sticker 6,base
+CPV7,Cape Verde,Cape Verde sticker 7,base
+CPV8,Cape Verde,Cape Verde sticker 8,base
+CPV9,Cape Verde,Cape Verde sticker 9,base
+CPV10,Cape Verde,Cape Verde sticker 10,base
+CPV11,Cape Verde,Cape Verde sticker 11,base
+CPV12,Cape Verde,Cape Verde sticker 12,base
+CPV13,Cape Verde,Team Photo - Cape Verde,base
+CPV14,Cape Verde,Cape Verde sticker 14,base
+CPV15,Cape Verde,Cape Verde sticker 15,base
+CPV16,Cape Verde,Cape Verde sticker 16,base
+CPV17,Cape Verde,Cape Verde sticker 17,base
+CPV18,Cape Verde,Cape Verde sticker 18,base
+CPV19,Cape Verde,Cape Verde sticker 19,base
+CPV20,Cape Verde,Cape Verde sticker 20,base
+KSA1,Saudi Arabia,Team Logo - Saudi Arabia,base
+KSA2,Saudi Arabia,Saudi Arabia sticker 2,base
+KSA3,Saudi Arabia,Saudi Arabia sticker 3,base
+KSA4,Saudi Arabia,Saudi Arabia sticker 4,base
+KSA5,Saudi Arabia,Saudi Arabia sticker 5,base
+KSA6,Saudi Arabia,Saudi Arabia sticker 6,base
+KSA7,Saudi Arabia,Saudi Arabia sticker 7,base
+KSA8,Saudi Arabia,Saudi Arabia sticker 8,base
+KSA9,Saudi Arabia,Saudi Arabia sticker 9,base
+KSA10,Saudi Arabia,Saudi Arabia sticker 10,base
+KSA11,Saudi Arabia,Saudi Arabia sticker 11,base
+KSA12,Saudi Arabia,Saudi Arabia sticker 12,base
+KSA13,Saudi Arabia,Team Photo - Saudi Arabia,base
+KSA14,Saudi Arabia,Saudi Arabia sticker 14,base
+KSA15,Saudi Arabia,Saudi Arabia sticker 15,base
+KSA16,Saudi Arabia,Saudi Arabia sticker 16,base
+KSA17,Saudi Arabia,Saudi Arabia sticker 17,base
+KSA18,Saudi Arabia,Saudi Arabia sticker 18,base
+KSA19,Saudi Arabia,Saudi Arabia sticker 19,base
+KSA20,Saudi Arabia,Saudi Arabia sticker 20,base
+URU1,Uruguay,Team Logo - Uruguay,base
+URU2,Uruguay,Uruguay sticker 2,base
+URU3,Uruguay,Uruguay sticker 3,base
+URU4,Uruguay,Uruguay sticker 4,base
+URU5,Uruguay,Uruguay sticker 5,base
+URU6,Uruguay,Uruguay sticker 6,base
+URU7,Uruguay,Uruguay sticker 7,base
+URU8,Uruguay,Uruguay sticker 8,base
+URU9,Uruguay,Uruguay sticker 9,base
+URU10,Uruguay,Uruguay sticker 10,base
+URU11,Uruguay,Uruguay sticker 11,base
+URU12,Uruguay,Uruguay sticker 12,base
+URU13,Uruguay,Team Photo - Uruguay,base
+URU14,Uruguay,Uruguay sticker 14,base
+URU15,Uruguay,Uruguay sticker 15,base
+URU16,Uruguay,Uruguay sticker 16,base
+URU17,Uruguay,Uruguay sticker 17,base
+URU18,Uruguay,Uruguay sticker 18,base
+URU19,Uruguay,Uruguay sticker 19,base
+URU20,Uruguay,Uruguay sticker 20,base
+FRA1,France,Team Logo - France,base
+FRA2,France,France sticker 2,base
+FRA3,France,France sticker 3,base
+FRA4,France,France sticker 4,base
+FRA5,France,France sticker 5,base
+FRA6,France,France sticker 6,base
+FRA7,France,France sticker 7,base
+FRA8,France,France sticker 8,base
+FRA9,France,France sticker 9,base
+FRA10,France,France sticker 10,base
+FRA11,France,France sticker 11,base
+FRA12,France,France sticker 12,base
+FRA13,France,Team Photo - France,base
+FRA14,France,France sticker 14,base
+FRA15,France,France sticker 15,base
+FRA16,France,France sticker 16,base
+FRA17,France,France sticker 17,base
+FRA18,France,France sticker 18,base
+FRA19,France,France sticker 19,base
+FRA20,France,France sticker 20,base
+SEN1,Senegal,Team Logo - Senegal,base
+SEN2,Senegal,Senegal sticker 2,base
+SEN3,Senegal,Senegal sticker 3,base
+SEN4,Senegal,Senegal sticker 4,base
+SEN5,Senegal,Senegal sticker 5,base
+SEN6,Senegal,Senegal sticker 6,base
+SEN7,Senegal,Senegal sticker 7,base
+SEN8,Senegal,Senegal sticker 8,base
+SEN9,Senegal,Senegal sticker 9,base
+SEN10,Senegal,Senegal sticker 10,base
+SEN11,Senegal,Senegal sticker 11,base
+SEN12,Senegal,Senegal sticker 12,base
+SEN13,Senegal,Team Photo - Senegal,base
+SEN14,Senegal,Senegal sticker 14,base
+SEN15,Senegal,Senegal sticker 15,base
+SEN16,Senegal,Senegal sticker 16,base
+SEN17,Senegal,Senegal sticker 17,base
+SEN18,Senegal,Senegal sticker 18,base
+SEN19,Senegal,Senegal sticker 19,base
+SEN20,Senegal,Senegal sticker 20,base
+IRQ1,Iraq,Team Logo - Iraq,base
+IRQ2,Iraq,Iraq sticker 2,base
+IRQ3,Iraq,Iraq sticker 3,base
+IRQ4,Iraq,Iraq sticker 4,base
+IRQ5,Iraq,Iraq sticker 5,base
+IRQ6,Iraq,Iraq sticker 6,base
+IRQ7,Iraq,Iraq sticker 7,base
+IRQ8,Iraq,Iraq sticker 8,base
+IRQ9,Iraq,Iraq sticker 9,base
+IRQ10,Iraq,Iraq sticker 10,base
+IRQ11,Iraq,Iraq sticker 11,base
+IRQ12,Iraq,Iraq sticker 12,base
+IRQ13,Iraq,Team Photo - Iraq,base
+IRQ14,Iraq,Iraq sticker 14,base
+IRQ15,Iraq,Iraq sticker 15,base
+IRQ16,Iraq,Iraq sticker 16,base
+IRQ17,Iraq,Iraq sticker 17,base
+IRQ18,Iraq,Iraq sticker 18,base
+IRQ19,Iraq,Iraq sticker 19,base
+IRQ20,Iraq,Iraq sticker 20,base
+NOR1,Norway,Team Logo - Norway,base
+NOR2,Norway,Norway sticker 2,base
+NOR3,Norway,Norway sticker 3,base
+NOR4,Norway,Norway sticker 4,base
+NOR5,Norway,Norway sticker 5,base
+NOR6,Norway,Norway sticker 6,base
+NOR7,Norway,Norway sticker 7,base
+NOR8,Norway,Norway sticker 8,base
+NOR9,Norway,Norway sticker 9,base
+NOR10,Norway,Norway sticker 10,base
+NOR11,Norway,Norway sticker 11,base
+NOR12,Norway,Norway sticker 12,base
+NOR13,Norway,Team Photo - Norway,base
+NOR14,Norway,Norway sticker 14,base
+NOR15,Norway,Norway sticker 15,base
+NOR16,Norway,Norway sticker 16,base
+NOR17,Norway,Norway sticker 17,base
+NOR18,Norway,Norway sticker 18,base
+NOR19,Norway,Norway sticker 19,base
+NOR20,Norway,Norway sticker 20,base
+ARG1,Argentina,Team Logo - Argentina,base
+ARG2,Argentina,Argentina sticker 2,base
+ARG3,Argentina,Argentina sticker 3,base
+ARG4,Argentina,Argentina sticker 4,base
+ARG5,Argentina,Argentina sticker 5,base
+ARG6,Argentina,Argentina sticker 6,base
+ARG7,Argentina,Argentina sticker 7,base
+ARG8,Argentina,Argentina sticker 8,base
+ARG9,Argentina,Argentina sticker 9,base
+ARG10,Argentina,Argentina sticker 10,base
+ARG11,Argentina,Argentina sticker 11,base
+ARG12,Argentina,Argentina sticker 12,base
+ARG13,Argentina,Team Photo - Argentina,base
+ARG14,Argentina,Argentina sticker 14,base
+ARG15,Argentina,Argentina sticker 15,base
+ARG16,Argentina,Argentina sticker 16,base
+ARG17,Argentina,Argentina sticker 17,base
+ARG18,Argentina,Argentina sticker 18,base
+ARG19,Argentina,Argentina sticker 19,base
+ARG20,Argentina,Argentina sticker 20,base
+DZA1,Algeria,Team Logo - Algeria,base
+DZA2,Algeria,Algeria sticker 2,base
+DZA3,Algeria,Algeria sticker 3,base
+DZA4,Algeria,Algeria sticker 4,base
+DZA5,Algeria,Algeria sticker 5,base
+DZA6,Algeria,Algeria sticker 6,base
+DZA7,Algeria,Algeria sticker 7,base
+DZA8,Algeria,Algeria sticker 8,base
+DZA9,Algeria,Algeria sticker 9,base
+DZA10,Algeria,Algeria sticker 10,base
+DZA11,Algeria,Algeria sticker 11,base
+DZA12,Algeria,Algeria sticker 12,base
+DZA13,Algeria,Team Photo - Algeria,base
+DZA14,Algeria,Algeria sticker 14,base
+DZA15,Algeria,Algeria sticker 15,base
+DZA16,Algeria,Algeria sticker 16,base
+DZA17,Algeria,Algeria sticker 17,base
+DZA18,Algeria,Algeria sticker 18,base
+DZA19,Algeria,Algeria sticker 19,base
+DZA20,Algeria,Algeria sticker 20,base
+AUT1,Austria,Team Logo - Austria,base
+AUT2,Austria,Austria sticker 2,base
+AUT3,Austria,Austria sticker 3,base
+AUT4,Austria,Austria sticker 4,base
+AUT5,Austria,Austria sticker 5,base
+AUT6,Austria,Austria sticker 6,base
+AUT7,Austria,Austria sticker 7,base
+AUT8,Austria,Austria sticker 8,base
+AUT9,Austria,Austria sticker 9,base
+AUT10,Austria,Austria sticker 10,base
+AUT11,Austria,Austria sticker 11,base
+AUT12,Austria,Austria sticker 12,base
+AUT13,Austria,Team Photo - Austria,base
+AUT14,Austria,Austria sticker 14,base
+AUT15,Austria,Austria sticker 15,base
+AUT16,Austria,Austria sticker 16,base
+AUT17,Austria,Austria sticker 17,base
+AUT18,Austria,Austria sticker 18,base
+AUT19,Austria,Austria sticker 19,base
+AUT20,Austria,Austria sticker 20,base
+JOR1,Jordan,Team Logo - Jordan,base
+JOR2,Jordan,Jordan sticker 2,base
+JOR3,Jordan,Jordan sticker 3,base
+JOR4,Jordan,Jordan sticker 4,base
+JOR5,Jordan,Jordan sticker 5,base
+JOR6,Jordan,Jordan sticker 6,base
+JOR7,Jordan,Jordan sticker 7,base
+JOR8,Jordan,Jordan sticker 8,base
+JOR9,Jordan,Jordan sticker 9,base
+JOR10,Jordan,Jordan sticker 10,base
+JOR11,Jordan,Jordan sticker 11,base
+JOR12,Jordan,Jordan sticker 12,base
+JOR13,Jordan,Team Photo - Jordan,base
+JOR14,Jordan,Jordan sticker 14,base
+JOR15,Jordan,Jordan sticker 15,base
+JOR16,Jordan,Jordan sticker 16,base
+JOR17,Jordan,Jordan sticker 17,base
+JOR18,Jordan,Jordan sticker 18,base
+JOR19,Jordan,Jordan sticker 19,base
+JOR20,Jordan,Jordan sticker 20,base
+POR1,Portugal,Team Logo - Portugal,base
+POR2,Portugal,Portugal sticker 2,base
+POR3,Portugal,Portugal sticker 3,base
+POR4,Portugal,Portugal sticker 4,base
+POR5,Portugal,Portugal sticker 5,base
+POR6,Portugal,Portugal sticker 6,base
+POR7,Portugal,Portugal sticker 7,base
+POR8,Portugal,Portugal sticker 8,base
+POR9,Portugal,Portugal sticker 9,base
+POR10,Portugal,Portugal sticker 10,base
+POR11,Portugal,Portugal sticker 11,base
+POR12,Portugal,Portugal sticker 12,base
+POR13,Portugal,Team Photo - Portugal,base
+POR14,Portugal,Portugal sticker 14,base
+POR15,Portugal,Portugal sticker 15,base
+POR16,Portugal,Portugal sticker 16,base
+POR17,Portugal,Portugal sticker 17,base
+POR18,Portugal,Portugal sticker 18,base
+POR19,Portugal,Portugal sticker 19,base
+POR20,Portugal,Portugal sticker 20,base
+COD1,Congo DR,Team Logo - Congo DR,base
+COD2,Congo DR,Congo DR sticker 2,base
+COD3,Congo DR,Congo DR sticker 3,base
+COD4,Congo DR,Congo DR sticker 4,base
+COD5,Congo DR,Congo DR sticker 5,base
+COD6,Congo DR,Congo DR sticker 6,base
+COD7,Congo DR,Congo DR sticker 7,base
+COD8,Congo DR,Congo DR sticker 8,base
+COD9,Congo DR,Congo DR sticker 9,base
+COD10,Congo DR,Congo DR sticker 10,base
+COD11,Congo DR,Congo DR sticker 11,base
+COD12,Congo DR,Congo DR sticker 12,base
+COD13,Congo DR,Team Photo - Congo DR,base
+COD14,Congo DR,Congo DR sticker 14,base
+COD15,Congo DR,Congo DR sticker 15,base
+COD16,Congo DR,Congo DR sticker 16,base
+COD17,Congo DR,Congo DR sticker 17,base
+COD18,Congo DR,Congo DR sticker 18,base
+COD19,Congo DR,Congo DR sticker 19,base
+COD20,Congo DR,Congo DR sticker 20,base
+UZB1,Uzbekistan,Team Logo - Uzbekistan,base
+UZB2,Uzbekistan,Uzbekistan sticker 2,base
+UZB3,Uzbekistan,Uzbekistan sticker 3,base
+UZB4,Uzbekistan,Uzbekistan sticker 4,base
+UZB5,Uzbekistan,Uzbekistan sticker 5,base
+UZB6,Uzbekistan,Uzbekistan sticker 6,base
+UZB7,Uzbekistan,Uzbekistan sticker 7,base
+UZB8,Uzbekistan,Uzbekistan sticker 8,base
+UZB9,Uzbekistan,Uzbekistan sticker 9,base
+UZB10,Uzbekistan,Uzbekistan sticker 10,base
+UZB11,Uzbekistan,Uzbekistan sticker 11,base
+UZB12,Uzbekistan,Uzbekistan sticker 12,base
+UZB13,Uzbekistan,Team Photo - Uzbekistan,base
+UZB14,Uzbekistan,Uzbekistan sticker 14,base
+UZB15,Uzbekistan,Uzbekistan sticker 15,base
+UZB16,Uzbekistan,Uzbekistan sticker 16,base
+UZB17,Uzbekistan,Uzbekistan sticker 17,base
+UZB18,Uzbekistan,Uzbekistan sticker 18,base
+UZB19,Uzbekistan,Uzbekistan sticker 19,base
+UZB20,Uzbekistan,Uzbekistan sticker 20,base
+COL1,Colombia,Team Logo - Colombia,base
+COL2,Colombia,Colombia sticker 2,base
+COL3,Colombia,Colombia sticker 3,base
+COL4,Colombia,Colombia sticker 4,base
+COL5,Colombia,Colombia sticker 5,base
+COL6,Colombia,Colombia sticker 6,base
+COL7,Colombia,Colombia sticker 7,base
+COL8,Colombia,Colombia sticker 8,base
+COL9,Colombia,Colombia sticker 9,base
+COL10,Colombia,Colombia sticker 10,base
+COL11,Colombia,Colombia sticker 11,base
+COL12,Colombia,Colombia sticker 12,base
+COL13,Colombia,Team Photo - Colombia,base
+COL14,Colombia,Colombia sticker 14,base
+COL15,Colombia,Colombia sticker 15,base
+COL16,Colombia,Colombia sticker 16,base
+COL17,Colombia,Colombia sticker 17,base
+COL18,Colombia,Colombia sticker 18,base
+COL19,Colombia,Colombia sticker 19,base
+COL20,Colombia,Colombia sticker 20,base
+ENG1,England,Team Logo - England,base
+ENG2,England,England sticker 2,base
+ENG3,England,England sticker 3,base
+ENG4,England,England sticker 4,base
+ENG5,England,England sticker 5,base
+ENG6,England,England sticker 6,base
+ENG7,England,England sticker 7,base
+ENG8,England,England sticker 8,base
+ENG9,England,England sticker 9,base
+ENG10,England,England sticker 10,base
+ENG11,England,England sticker 11,base
+ENG12,England,England sticker 12,base
+ENG13,England,Team Photo - England,base
+ENG14,England,England sticker 14,base
+ENG15,England,England sticker 15,base
+ENG16,England,England sticker 16,base
+ENG17,England,England sticker 17,base
+ENG18,England,England sticker 18,base
+ENG19,England,England sticker 19,base
+ENG20,England,England sticker 20,base
+CRO1,Croatia,Team Logo - Croatia,base
+CRO2,Croatia,Croatia sticker 2,base
+CRO3,Croatia,Croatia sticker 3,base
+CRO4,Croatia,Croatia sticker 4,base
+CRO5,Croatia,Croatia sticker 5,base
+CRO6,Croatia,Croatia sticker 6,base
+CRO7,Croatia,Croatia sticker 7,base
+CRO8,Croatia,Croatia sticker 8,base
+CRO9,Croatia,Croatia sticker 9,base
+CRO10,Croatia,Croatia sticker 10,base
+CRO11,Croatia,Croatia sticker 11,base
+CRO12,Croatia,Croatia sticker 12,base
+CRO13,Croatia,Team Photo - Croatia,base
+CRO14,Croatia,Croatia sticker 14,base
+CRO15,Croatia,Croatia sticker 15,base
+CRO16,Croatia,Croatia sticker 16,base
+CRO17,Croatia,Croatia sticker 17,base
+CRO18,Croatia,Croatia sticker 18,base
+CRO19,Croatia,Croatia sticker 19,base
+CRO20,Croatia,Croatia sticker 20,base
+GHA1,Ghana,Team Logo - Ghana,base
+GHA2,Ghana,Ghana sticker 2,base
+GHA3,Ghana,Ghana sticker 3,base
+GHA4,Ghana,Ghana sticker 4,base
+GHA5,Ghana,Ghana sticker 5,base
+GHA6,Ghana,Ghana sticker 6,base
+GHA7,Ghana,Ghana sticker 7,base
+GHA8,Ghana,Ghana sticker 8,base
+GHA9,Ghana,Ghana sticker 9,base
+GHA10,Ghana,Ghana sticker 10,base
+GHA11,Ghana,Ghana sticker 11,base
+GHA12,Ghana,Ghana sticker 12,base
+GHA13,Ghana,Team Photo - Ghana,base
+GHA14,Ghana,Ghana sticker 14,base
+GHA15,Ghana,Ghana sticker 15,base
+GHA16,Ghana,Ghana sticker 16,base
+GHA17,Ghana,Ghana sticker 17,base
+GHA18,Ghana,Ghana sticker 18,base
+GHA19,Ghana,Ghana sticker 19,base
+GHA20,Ghana,Ghana sticker 20,base
+PAN1,Panama,Team Logo - Panama,base
+PAN2,Panama,Panama sticker 2,base
+PAN3,Panama,Panama sticker 3,base
+PAN4,Panama,Panama sticker 4,base
+PAN5,Panama,Panama sticker 5,base
+PAN6,Panama,Panama sticker 6,base
+PAN7,Panama,Panama sticker 7,base
+PAN8,Panama,Panama sticker 8,base
+PAN9,Panama,Panama sticker 9,base
+PAN10,Panama,Panama sticker 10,base
+PAN11,Panama,Panama sticker 11,base
+PAN12,Panama,Panama sticker 12,base
+PAN13,Panama,Team Photo - Panama,base
+PAN14,Panama,Panama sticker 14,base
+PAN15,Panama,Panama sticker 15,base
+PAN16,Panama,Panama sticker 16,base
+PAN17,Panama,Panama sticker 17,base
+PAN18,Panama,Panama sticker 18,base
+PAN19,Panama,Panama sticker 19,base
+PAN20,Panama,Panama sticker 20,base
+CC1,Coca-Cola,Lamine Yamal - Spain,bonus
+CC2,Coca-Cola,Joshua Kimmich - Germany,bonus
+CC3,Coca-Cola,Harry Kane - England,bonus
+CC4,Coca-Cola,Santiago Giménez - Mexico,bonus
+CC5,Coca-Cola,Antonee Robinson - USA,bonus
+CC6,Coca-Cola,Jefferson Lerma - Colombia,bonus
+CC7,Coca-Cola,Edson Álvarez - Mexico,bonus
+CC8,Coca-Cola,Virgil van Dijk - Netherlands,bonus
+CC9,Coca-Cola,Alphonso Davies - Canada,bonus
+CC10,Coca-Cola,Weston McKennie - USA,bonus
+CC11,Coca-Cola,Lautaro Martínez - Argentina,bonus
+CC12,Coca-Cola,Gabriel Magalhães - Brazil,bonus

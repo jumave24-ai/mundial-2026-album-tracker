@@ -445,6 +445,23 @@
             <button class="pill" data-filter="pasted">Pegadas</button>
             <button class="pill" data-filter="duplicates">Repetidas</button>
           </div>
+          <div class="notice small" style="margin-top:12px">
+            La app reconoce códigos como <b>00</b>, <b>FWC1</b>, <b>ARG17</b>, <b>USA5</b> y <b>CC1</b>. También acepta espacios: FWC 1, ARG 17, CC 1.
+          </div>
+          <div class="two-col" style="margin-top:12px">
+            <div>
+              <label for="quickCodeInput">Agregar o buscar código rápido</label>
+              <input id="quickCodeInput" placeholder="Ej. 00, FWC 19, CC1, ARG17" />
+            </div>
+            <div>
+              <label for="quickNameInput">Nombre/nota opcional</label>
+              <input id="quickNameInput" placeholder="Ej. Messi repetida" />
+            </div>
+          </div>
+          <div class="button-row" style="margin-top:8px">
+            <button class="primary" id="quickAddBtn">Agregar / actualizar código</button>
+            <button class="ghost" id="quickSearchBtn">Buscar ese código</button>
+          </div>
           <p class="small muted" id="visibleCountText"></p>
         </div>
         <div class="sticker-list" id="stickerList"></div>
@@ -478,7 +495,7 @@
 
         <div class="card">
           <h2>Importar lista oficial o personalizada</h2>
-          <p class="small muted">La app trae una lista genérica del 001 al 980. Si tienes una lista con equipos/nombres, importa un CSV con columnas: <b>code, section, name</b>.</p>
+          <p class="small muted">La app trae la estructura base 2026: <b>00 + FWC1-FWC19 + 48 equipos x 20</b>, y también <b>CC1-CC12</b> de Coca-Cola como bonus. Si tienes una lista con nombres exactos, importa un CSV con columnas: <b>code, section, name, category</b>.</p>
           <div class="button-row">
             <label class="file-label" for="csvFile">Seleccionar CSV</label>
             <input id="csvFile" type="file" accept=".csv,text/csv" style="display:none" />
@@ -580,9 +597,43 @@
   <iframe name="hiddenSaveFrame" id="hiddenSaveFrame" style="display:none"></iframe>
 
   <script>
-    const STORAGE_KEY = 'wc26_album_tracker_state_v1';
+    const STORAGE_KEY = 'wc26_album_tracker_state_v2';
+    const OLD_STORAGE_KEY = 'wc26_album_tracker_state_v1';
     const DEFAULT_TOTAL = 980;
     const DEFAULT_PAD = 3;
+
+    const TEAM_CODES = [
+      ['MEX','Mexico'], ['RSA','South Africa'], ['KOR','South Korea'], ['CZE','Czechia'],
+      ['CAN','Canada'], ['BIH','Bosnia and Herzegovina'], ['QAT','Qatar'], ['SUI','Switzerland'],
+      ['BRA','Brazil'], ['MAR','Morocco'], ['HAI','Haiti'], ['SCO','Scotland'],
+      ['USA','USA'], ['PAR','Paraguay'], ['AUS','Australia'], ['TUR','Türkiye'],
+      ['GER','Germany'], ['CUW','Curaçao'], ['CIV','Ivory Coast'], ['ECU','Ecuador'],
+      ['NED','Netherlands'], ['JPN','Japan'], ['SWE','Sweden'], ['TUN','Tunisia'],
+      ['BEL','Belgium'], ['EGY','Egypt'], ['IRI','Iran'], ['NZL','New Zealand'],
+      ['ESP','Spain'], ['CPV','Cape Verde'], ['KSA','Saudi Arabia'], ['URU','Uruguay'],
+      ['FRA','France'], ['SEN','Senegal'], ['IRQ','Iraq'], ['NOR','Norway'],
+      ['ARG','Argentina'], ['DZA','Algeria'], ['AUT','Austria'], ['JOR','Jordan'],
+      ['POR','Portugal'], ['COD','Congo DR'], ['UZB','Uzbekistan'], ['COL','Colombia'],
+      ['ENG','England'], ['CRO','Croatia'], ['GHA','Ghana'], ['PAN','Panama']
+    ];
+    const TEAM_MAP = Object.fromEntries(TEAM_CODES);
+
+    const FWC_NAMES = {
+      '00': 'Panini Logo',
+      FWC1: 'Official Emblem', FWC2: 'Official Emblem', FWC3: 'Official Mascots', FWC4: 'Official Slogan',
+      FWC5: 'Official Ball', FWC6: 'Canada - Host Countries & Cities', FWC7: 'Mexico - Host Countries & Cities', FWC8: 'USA - Host Countries & Cities',
+      FWC9: 'Italy 1934 - FIFA Museum', FWC10: 'Uruguay 1950 - FIFA Museum', FWC11: 'West Germany 1954 - FIFA Museum',
+      FWC12: 'Brazil 1962 - FIFA Museum', FWC13: 'West Germany 1974 - FIFA Museum', FWC14: 'Argentina 1986 - FIFA Museum',
+      FWC15: 'Brazil 1994 - FIFA Museum', FWC16: 'Brazil 2002 - FIFA Museum', FWC17: 'Italy 2006 - FIFA Museum',
+      FWC18: 'Germany 2014 - FIFA Museum', FWC19: 'Argentina 2022 - FIFA Museum'
+    };
+
+    const COCA_COLA_STICKERS = [
+      ['CC1','Lamine Yamal - Spain'], ['CC2','Joshua Kimmich - Germany'], ['CC3','Harry Kane - England'],
+      ['CC4','Santiago Giménez - Mexico'], ['CC5','Antonee Robinson - USA'], ['CC6','Jefferson Lerma - Colombia'],
+      ['CC7','Edson Álvarez - Mexico'], ['CC8','Virgil van Dijk - Netherlands'], ['CC9','Alphonso Davies - Canada'],
+      ['CC10','Weston McKennie - USA'], ['CC11','Lautaro Martínez - Argentina'], ['CC12','Gabriel Magalhães - Brazil']
+    ];
 
     const state = {
       title: 'Álbum Mundial 2026',
@@ -605,23 +656,73 @@
       return String(num).padStart(Number(pad || DEFAULT_PAD), '0');
     }
 
-    function makeDefaultStickers(total = DEFAULT_TOTAL, pad = DEFAULT_PAD) {
-      return Array.from({ length: Number(total) || DEFAULT_TOTAL }, (_, i) => ({
-        code: padCode(i + 1, pad),
-        section: 'Album',
-        name: '',
-        pasted: false,
-        duplicates: 0,
-        updatedAt: '',
-        updatedBy: ''
-      }));
+    function normalizeCode(raw) {
+      let code = String(raw || '').trim().toUpperCase();
+      code = code.replace(/\s+/g, '');
+      code = code.replace(/^CC[-_]?/i, 'CC');
+      code = code.replace(/^FWC[-_]?/i, 'FWC');
+      if (code === '0') return '00';
+      if (/^\d{1,3}$/.test(code) && code !== '00') return padCode(Number(code), DEFAULT_PAD);
+      return code;
+    }
+
+    function detectStickerMeta(code, section = '', name = '', category = '') {
+      const clean = normalizeCode(code);
+      const prefix3 = clean.slice(0, 3);
+      const isCocaCola = /^CC/.test(clean);
+      const isFWC = clean === '00' || /^FWC\d+$/i.test(clean);
+      const isTeam = !!TEAM_MAP[prefix3] && /^([A-Z]{3})\d{1,2}$/.test(clean);
+      const detectedCategory = category || (isCocaCola ? 'bonus' : 'base');
+      let detectedSection = section;
+      if (!detectedSection || detectedSection === 'Album') {
+        if (clean === '00') detectedSection = 'Intro / FWC';
+        else if (/^FWC([1-8])$/.test(clean)) detectedSection = 'Intro / FWC';
+        else if (/^FWC(9|1[0-9])$/.test(clean)) detectedSection = 'FIFA World Cup History';
+        else if (isCocaCola) detectedSection = 'Coca-Cola';
+        else if (isTeam) detectedSection = TEAM_MAP[prefix3];
+        else detectedSection = 'Album';
+      }
+      let detectedName = name;
+      if (!detectedName) {
+        if (FWC_NAMES[clean]) detectedName = FWC_NAMES[clean];
+        else if (isCocaCola) detectedName = (Object.fromEntries(COCA_COLA_STICKERS))[clean] || 'Coca-Cola special sticker';
+        else if (isTeam) {
+          const number = Number(clean.replace(prefix3, ''));
+          if (number === 1) detectedName = `Team Logo - ${TEAM_MAP[prefix3]}`;
+          else if (number === 13) detectedName = `Team Photo - ${TEAM_MAP[prefix3]}`;
+          else detectedName = `${TEAM_MAP[prefix3]} sticker ${number}`;
+        }
+      }
+      return { code: clean, section: detectedSection, name: detectedName, category: detectedCategory };
+    }
+
+    function makeDefaultStickers() {
+      const list = [];
+      list.push({ code: '00', section: 'Intro / FWC', name: FWC_NAMES['00'], category: 'base' });
+      for (let i = 1; i <= 19; i++) {
+        const code = `FWC${i}`;
+        const meta = detectStickerMeta(code, '', FWC_NAMES[code] || '', 'base');
+        list.push(meta);
+      }
+      TEAM_CODES.forEach(([prefix, team]) => {
+        for (let i = 1; i <= 20; i++) {
+          const code = `${prefix}${i}`;
+          list.push(detectStickerMeta(code, team, '', 'base'));
+        }
+      });
+      COCA_COLA_STICKERS.forEach(([code, name]) => {
+        list.push({ code, section: 'Coca-Cola', name, category: 'bonus' });
+      });
+      return list.map(s => normalizeSticker({ ...s, pasted: false, duplicates: 0, updatedAt: '', updatedBy: '' }));
     }
 
     function normalizeSticker(item) {
+      const meta = detectStickerMeta(item.code || '', item.section || '', item.name || '', item.category || '');
       return {
-        code: String(item.code || '').trim(),
-        section: String(item.section || 'Album').trim() || 'Album',
-        name: String(item.name || '').trim(),
+        code: meta.code,
+        section: String(meta.section || 'Album').trim() || 'Album',
+        name: String(meta.name || '').trim(),
+        category: String(meta.category || 'base').trim() || 'base',
         pasted: item.pasted === true || item.pasted === 'TRUE' || item.pasted === 'true' || item.pasted === '1' || item.pasted === 1,
         duplicates: Math.max(0, Number(item.duplicates || 0)),
         updatedAt: String(item.updatedAt || ''),
@@ -633,18 +734,30 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) {
         state.stickers = makeDefaultStickers();
+        state.total = state.stickers.filter(s => s.category !== 'bonus').length;
         saveLocal();
         return;
       }
       try {
         const saved = JSON.parse(raw);
         Object.assign(state, saved);
-        state.stickers = Array.isArray(saved.stickers) && saved.stickers.length ? saved.stickers.map(normalizeSticker) : makeDefaultStickers(state.total, state.pad);
+        state.stickers = Array.isArray(saved.stickers) && saved.stickers.length ? saved.stickers.map(normalizeSticker).filter(s => s.code) : makeDefaultStickers();
+        ensureOfficialCodes();
       } catch (error) {
         console.error(error);
         state.stickers = makeDefaultStickers();
+        state.total = state.stickers.filter(s => s.category !== 'bonus').length;
         saveLocal();
       }
+    }
+
+    function ensureOfficialCodes() {
+      const current = new Map(state.stickers.map(s => [normalizeCode(s.code), normalizeSticker(s)]));
+      makeDefaultStickers().forEach(item => {
+        if (!current.has(item.code)) current.set(item.code, item);
+      });
+      state.stickers = [...current.values()].filter(s => s.code).sort(compareStickers);
+      state.total = state.stickers.filter(s => s.category !== 'bonus').length;
     }
 
     function saveLocal() {
@@ -681,13 +794,17 @@
     }
 
     function stats() {
-      const total = state.stickers.length;
-      const pasted = state.stickers.filter(s => s.pasted).length;
+      const base = state.stickers.filter(s => s.category !== 'bonus');
+      const bonus = state.stickers.filter(s => s.category === 'bonus');
+      const total = base.length;
+      const pasted = base.filter(s => s.pasted).length;
       const missing = Math.max(0, total - pasted);
+      const bonusTotal = bonus.length;
+      const bonusPasted = bonus.filter(s => s.pasted).length;
       const duplicates = state.stickers.reduce((sum, s) => sum + Number(s.duplicates || 0), 0);
       const uniqueDuplicates = state.stickers.filter(s => Number(s.duplicates || 0) > 0).length;
       const completion = total ? Math.round((pasted / total) * 1000) / 10 : 0;
-      return { total, pasted, missing, duplicates, uniqueDuplicates, completion };
+      return { total, pasted, missing, duplicates, uniqueDuplicates, completion, bonusTotal, bonusPasted, allTotal: state.stickers.length };
     }
 
     function sections() {
@@ -697,9 +814,9 @@
     function render() {
       const s = stats();
       byId('appTitle').textContent = state.title || 'Álbum Mundial 2026';
-      byId('appSubtitle').textContent = `${s.pasted} de ${s.total} pegadas · ${s.missing} faltantes · ${s.duplicates} repetidas`;
+      byId('appSubtitle').textContent = `${s.pasted} de ${s.total} base · ${s.bonusPasted}/${s.bonusTotal} Coca-Cola · ${s.duplicates} repetidas`;
       byId('syncBadge').textContent = state.apiUrl ? (state.editorPin ? 'Compartido + edición' : 'Compartido lectura') : 'Local';
-      byId('statPasted').textContent = s.pasted;
+      byId('statPasted').textContent = `${s.pasted}/${s.total}`;
       byId('statMissing').textContent = s.missing;
       byId('statDuplicates').textContent = s.duplicates;
       byId('statCompletion').textContent = `${s.completion}%`;
@@ -728,7 +845,7 @@
       byId('editorPinInput').value = state.editorPin || '';
       byId('myNameInput').value = state.myName || '';
       byId('titleInput').value = state.title || '';
-      byId('totalInput').value = state.total || DEFAULT_TOTAL;
+      byId('totalInput').value = state.stickers.filter(s => s.category !== 'bonus').length || state.total || DEFAULT_TOTAL;
       byId('padInput').value = state.pad || DEFAULT_PAD;
     }
 
@@ -741,10 +858,26 @@
         return `<div class="stat" style="margin-bottom:8px">
           <div class="label">${escapeHtml(sec)}</div>
           <div class="value" style="font-size:1.1rem">${pasted}/${items.length} · ${pct}%</div>
-          <div class="small muted">Repetidas: ${dupe}</div>
+          <div class="small muted">Repetidas: ${dupe}${sec === 'Coca-Cola' ? ' · Bonus' : ''}</div>
         </div>`;
       }).join('');
       byId('sectionSummary').innerHTML = grouped || '<div class="empty-state">No hay secciones todavía.</div>';
+    }
+
+    function compareStickers(a, b) {
+      const rank = c => {
+        c = normalizeCode(c);
+        if (c === '00') return [0, 0, ''];
+        if (/^FWC\d+$/.test(c)) return [1, Number(c.replace('FWC','')), ''];
+        const p = c.slice(0, 3);
+        const teamIndex = TEAM_CODES.findIndex(([code]) => code === p);
+        if (teamIndex >= 0) return [2 + teamIndex, Number(c.replace(p,'')) || 0, p];
+        if (/^CC\d+$/.test(c)) return [200, Number(c.replace('CC','')), ''];
+        return [300, 0, c];
+      };
+      const ra = rank(a.code || a);
+      const rb = rank(b.code || b);
+      return ra[0] - rb[0] || ra[1] - rb[1] || String(ra[2]).localeCompare(String(rb[2]));
     }
 
     function getVisibleStickers() {
@@ -761,9 +894,9 @@
 
       list.sort((a, b) => {
         if (state.sort === 'section') return (a.section + a.code).localeCompare(b.section + b.code, undefined, { numeric: true });
-        if (state.sort === 'missing') return Number(a.pasted) - Number(b.pasted) || a.code.localeCompare(b.code, undefined, { numeric: true });
-        if (state.sort === 'duplicates') return Number(b.duplicates || 0) - Number(a.duplicates || 0) || a.code.localeCompare(b.code, undefined, { numeric: true });
-        return a.code.localeCompare(b.code, undefined, { numeric: true });
+        if (state.sort === 'missing') return Number(a.pasted) - Number(b.pasted) || compareStickers(a, b);
+        if (state.sort === 'duplicates') return Number(b.duplicates || 0) - Number(a.duplicates || 0) || compareStickers(a, b);
+        return compareStickers(a, b);
       });
       return list;
     }
@@ -784,7 +917,7 @@
         <div class="sticker-head">
           <div>
             <div class="code">#${escapeHtml(s.code)}</div>
-            <div class="small muted">${escapeHtml(s.section || 'Album')}</div>
+            <div class="small muted">${escapeHtml(s.section || 'Album')}${s.category === 'bonus' ? ' · Bonus' : ''}</div>
             ${s.name ? `<div class="small">${escapeHtml(s.name)}</div>` : ''}
           </div>
           <div class="button-row" style="justify-content:flex-end">
@@ -876,6 +1009,7 @@
         }
         if (Array.isArray(data.stickers) && data.stickers.length) {
           state.stickers = data.stickers.map(normalizeSticker).filter(s => s.code);
+          ensureOfficialCodes();
         }
         state.lastLoadedAt = new Date().toISOString();
         saveLocal();
@@ -957,7 +1091,7 @@
       };
       const rows = list.map(item => `<tr>
         <td>${escapeHtml(item.code)}</td>
-        <td>${escapeHtml(item.section || '')}</td>
+        <td>${escapeHtml(item.section || '')}${item.category === 'bonus' ? ' · Bonus' : ''}</td>
         <td>${escapeHtml(item.name || '')}</td>
         <td>${item.pasted ? 'Pegada' : 'Falta'}</td>
         <td>${Number(item.duplicates || 0)}</td>
@@ -981,14 +1115,47 @@
     }
 
     function exportCsv() {
-      const header = ['code','section','name','pasted','duplicates','updatedAt','updatedBy'];
+      const header = ['code','section','name','category','pasted','duplicates','updatedAt','updatedBy'];
       const rows = state.stickers.map(s => header.map(h => csvEscape(s[h])).join(','));
       downloadText(`${state.title.replace(/[^a-z0-9]+/gi,'_')}_stickers.csv`, [header.join(','), ...rows].join('\n'), 'text/csv');
     }
 
     function downloadSampleCsv() {
-      const sample = `code,section,name\n001,Intro,Logo oficial\n002,Intro,Mascota\nARG01,Argentina,Escudo\nCOL01,Colombia,Escudo\nUSA01,United States,Escudo`;
+      const sample = `code,section,name,category\n00,Intro / FWC,Panini Logo,base\nFWC1,Intro / FWC,Official Emblem,base\nFWC19,FIFA World Cup History,Argentina 2022 - FIFA Museum,base\nARG17,Argentina,Argentina sticker 17,base\nUSA5,USA,USA sticker 5,base\nCC1,Coca-Cola,Lamine Yamal - Spain,bonus`;
       downloadText('sample_stickers_import.csv', sample, 'text/csv');
+    }
+
+    function quickAddOrUpdate() {
+      const rawCode = byId('quickCodeInput').value;
+      const code = normalizeCode(rawCode);
+      if (!code) { alert('Escribe un código, por ejemplo 00, FWC19, CC1 o ARG17.'); return; }
+      const note = byId('quickNameInput').value.trim();
+      const idx = state.stickers.findIndex(s => s.code === code);
+      if (idx >= 0) {
+        const changes = {};
+        if (note) changes.name = note;
+        updateSticker(code, changes, true);
+      } else {
+        const meta = detectStickerMeta(code, '', note, '');
+        state.stickers.push(normalizeSticker({ ...meta, pasted: false, duplicates: 0, updatedAt: new Date().toISOString(), updatedBy: state.myName || 'Unknown' }));
+        state.stickers.sort(compareStickers);
+        state.total = state.stickers.filter(s => s.category !== 'bonus').length;
+        saveLocal();
+        saveStickerRemote(state.stickers.find(s => s.code === code));
+        render();
+      }
+      state.search = code;
+      byId('searchInput').value = code;
+      renderStickers();
+    }
+
+    function quickSearch() {
+      const code = normalizeCode(byId('quickCodeInput').value);
+      if (!code) return;
+      state.search = code;
+      byId('searchInput').value = code;
+      goTab('stickers');
+      renderStickers();
     }
 
     function exportJson() {
@@ -1051,20 +1218,22 @@
         const codeIdx = header.indexOf('code');
         const sectionIdx = header.indexOf('section');
         const nameIdx = header.indexOf('name');
+        const categoryIdx = header.indexOf('category');
         if (codeIdx === -1) {
           byId('importStatus').textContent = 'El CSV debe tener una columna code.';
           return;
         }
         const map = new Map(state.stickers.map(s => [s.code, s]));
         rows.slice(1).forEach(row => {
-          const code = String(row[codeIdx] || '').trim();
+          const code = normalizeCode(row[codeIdx] || '');
           if (!code) return;
           const existing = map.get(code) || { code, pasted: false, duplicates: 0, updatedAt: '', updatedBy: '' };
           existing.section = sectionIdx >= 0 ? String(row[sectionIdx] || existing.section || 'Album').trim() || 'Album' : existing.section || 'Album';
           existing.name = nameIdx >= 0 ? String(row[nameIdx] || existing.name || '').trim() : existing.name || '';
+          existing.category = categoryIdx >= 0 ? String(row[categoryIdx] || existing.category || '').trim() : existing.category || '';
           map.set(code, normalizeSticker(existing));
         });
-        state.stickers = [...map.values()].sort((a,b) => a.code.localeCompare(b.code, undefined, { numeric: true }));
+        state.stickers = [...map.values()].sort((a,b) => compareStickers(a, b));
         state.total = state.stickers.length;
         state.lastSavedAt = new Date().toISOString();
         saveLocal();
@@ -1096,21 +1265,18 @@
     }
 
     function regenerateMissing() {
-      const total = Number(byId('totalInput').value || state.total || DEFAULT_TOTAL);
-      const pad = Number(byId('padInput').value || state.pad || DEFAULT_PAD);
-      const map = new Map(state.stickers.map(s => [s.code, s]));
-      for (let i = 1; i <= total; i++) {
-        const code = padCode(i, pad);
-        if (!map.has(code)) map.set(code, { code, section: 'Album', name: '', pasted: false, duplicates: 0, updatedAt: '', updatedBy: '' });
-      }
-      state.total = total;
-      state.pad = pad;
-      state.stickers = [...map.values()].map(normalizeSticker).sort((a,b) => a.code.localeCompare(b.code, undefined, { numeric: true }));
+      const map = new Map(state.stickers.map(s => [normalizeCode(s.code), normalizeSticker(s)]));
+      makeDefaultStickers().forEach(item => {
+        if (!map.has(item.code)) map.set(item.code, item);
+      });
+      state.stickers = [...map.values()].filter(s => s.code).sort(compareStickers);
+      state.total = state.stickers.filter(s => s.category !== 'bonus').length;
+      state.pad = Number(byId('padInput').value || state.pad || DEFAULT_PAD);
       state.lastSavedAt = new Date().toISOString();
       saveLocal();
       saveSettingsRemote();
       render();
-      alert('Lista actualizada. No se borró lo que ya tenías marcado.');
+      alert('Lista oficial/base actualizada: 00 + FWC1-FWC19 + equipos + CC1-CC12. No se borró lo que ya tenías marcado.');
     }
 
     function escapeHtml(text) {
@@ -1126,6 +1292,8 @@
       byId('searchInput').addEventListener('input', e => { state.search = e.target.value; renderStickers(); });
       byId('sectionFilter').addEventListener('change', e => { state.sectionFilter = e.target.value; renderStickers(); });
       byId('sortSelect').addEventListener('change', e => { state.sort = e.target.value; renderStickers(); });
+      byId('quickAddBtn').addEventListener('click', quickAddOrUpdate);
+      byId('quickSearchBtn').addEventListener('click', quickSearch);
       document.querySelectorAll('.pill').forEach(btn => btn.addEventListener('click', () => {
         state.activeFilter = btn.dataset.filter;
         document.querySelectorAll('.pill').forEach(p => p.classList.toggle('active', p === btn));

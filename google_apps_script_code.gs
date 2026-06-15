@@ -1,5 +1,7 @@
 /*******************************************************
- * World Cup 2026 Sticker Album Tracker - Google Sheets Backend
+ * World Cup 2026 Sticker Album Tracker - Google Sheets Backend v2
+ * Supports mixed codes: 00, FWC1-FWC19, team codes like ARG17,
+ * and Coca-Cola bonus stickers like CC1-CC12.
  *
  * How to use:
  * 1) Create a Google Sheet.
@@ -15,6 +17,7 @@
 const EDIT_PIN = 'CHANGE_THIS_PIN_2026'; // Change this before deploying.
 const SETTINGS_SHEET = 'Settings';
 const STICKERS_SHEET = 'Stickers';
+const STICKER_HEADERS = ['code', 'section', 'name', 'category', 'pasted', 'duplicates', 'updatedAt', 'updatedBy'];
 
 function doGet(e) {
   try {
@@ -83,8 +86,20 @@ function ensureSheets_() {
   let stickers = ss.getSheetByName(STICKERS_SHEET);
   if (!stickers) stickers = ss.insertSheet(STICKERS_SHEET);
   if (stickers.getLastRow() === 0) {
-    stickers.appendRow(['code', 'section', 'name', 'pasted', 'duplicates', 'updatedAt', 'updatedBy']);
+    stickers.appendRow(STICKER_HEADERS);
+  } else {
+    migrateStickerHeaders_(stickers);
   }
+}
+
+function migrateStickerHeaders_(sheet) {
+  const headers = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), STICKER_HEADERS.length)).getValues()[0]
+    .map(h => String(h || '').trim());
+  if (!headers.includes('category')) {
+    sheet.insertColumnAfter(3);
+    sheet.getRange(1, 4).setValue('category');
+  }
+  sheet.getRange(1, 1, 1, STICKER_HEADERS.length).setValues([STICKER_HEADERS]);
 }
 
 function loadAll_() {
@@ -118,19 +133,21 @@ function saveSettings_(settings) {
 
 function getStickers_() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(STICKERS_SHEET);
+  migrateStickerHeaders_(sheet);
   const lastRow = sheet.getLastRow();
   if (lastRow < 2) return [];
-  const values = sheet.getRange(2, 1, lastRow - 1, 7).getValues();
+  const values = sheet.getRange(2, 1, lastRow - 1, STICKER_HEADERS.length).getValues();
   return values
     .filter(row => String(row[0] || '').trim() !== '')
-    .map(row => ({
-      code: String(row[0] || '').trim(),
-      section: String(row[1] || 'Album').trim() || 'Album',
-      name: String(row[2] || '').trim(),
-      pasted: row[3] === true || String(row[3]).toUpperCase() === 'TRUE' || String(row[3]) === '1',
-      duplicates: Math.max(0, Number(row[4] || 0)),
-      updatedAt: String(row[5] || ''),
-      updatedBy: String(row[6] || '')
+    .map(row => normalizeSticker_({
+      code: row[0],
+      section: row[1],
+      name: row[2],
+      category: row[3],
+      pasted: row[4],
+      duplicates: row[5],
+      updatedAt: row[6],
+      updatedBy: row[7]
     }));
 }
 
@@ -138,10 +155,11 @@ function updateSticker_(sticker) {
   if (!sticker || !sticker.code) throw new Error('Sticker code is required.');
   const clean = normalizeSticker_(sticker);
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(STICKERS_SHEET);
+  migrateStickerHeaders_(sheet);
   const row = findStickerRow_(clean.code);
-  const values = [[clean.code, clean.section, clean.name, clean.pasted, clean.duplicates, clean.updatedAt, clean.updatedBy]];
+  const values = [[clean.code, clean.section, clean.name, clean.category, clean.pasted, clean.duplicates, clean.updatedAt, clean.updatedBy]];
   if (row > 0) {
-    sheet.getRange(row, 1, 1, 7).setValues(values);
+    sheet.getRange(row, 1, 1, STICKER_HEADERS.length).setValues(values);
   } else {
     sheet.appendRow(values[0]);
   }
@@ -152,8 +170,9 @@ function findStickerRow_(code) {
   const lastRow = sheet.getLastRow();
   if (lastRow < 2) return -1;
   const codes = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+  const cleanCode = normalizeCode_(code);
   for (let i = 0; i < codes.length; i++) {
-    if (String(codes[i][0]).trim() === String(code).trim()) return i + 2;
+    if (normalizeCode_(codes[i][0]) === cleanCode) return i + 2;
   }
   return -1;
 }
@@ -162,19 +181,38 @@ function bulkSave_(settings, stickers) {
   saveSettings_(settings || {});
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(STICKERS_SHEET);
   sheet.clearContents();
-  sheet.appendRow(['code', 'section', 'name', 'pasted', 'duplicates', 'updatedAt', 'updatedBy']);
+  sheet.appendRow(STICKER_HEADERS);
   const rows = (stickers || []).filter(s => s && s.code).map(s => {
     const clean = normalizeSticker_(s);
-    return [clean.code, clean.section, clean.name, clean.pasted, clean.duplicates, clean.updatedAt, clean.updatedBy];
+    return [clean.code, clean.section, clean.name, clean.category, clean.pasted, clean.duplicates, clean.updatedAt, clean.updatedBy];
   });
-  if (rows.length) sheet.getRange(2, 1, rows.length, 7).setValues(rows);
+  if (rows.length) sheet.getRange(2, 1, rows.length, STICKER_HEADERS.length).setValues(rows);
+}
+
+function normalizeCode_(value) {
+  let code = String(value || '').trim().toUpperCase().replace(/\s+/g, '');
+  code = code.replace(/^CC[-_]?/i, 'CC');
+  code = code.replace(/^FWC[-_]?/i, 'FWC');
+  if (code === '0') return '00';
+  if (/^\d{1,3}$/.test(code) && code !== '00') return String(Number(code)).padStart(3, '0');
+  return code;
+}
+
+function detectCategory_(code, category) {
+  const clean = normalizeCode_(code);
+  if (category) return String(category).trim();
+  if (/^CC/.test(clean)) return 'bonus';
+  return 'base';
 }
 
 function normalizeSticker_(sticker) {
+  const code = normalizeCode_(sticker.code);
+  const category = detectCategory_(code, sticker.category);
   return {
-    code: String(sticker.code || '').trim(),
-    section: String(sticker.section || 'Album').trim() || 'Album',
+    code: code,
+    section: String(sticker.section || (category === 'bonus' ? 'Coca-Cola' : 'Album')).trim() || 'Album',
     name: String(sticker.name || '').trim(),
+    category: category,
     pasted: sticker.pasted === true || String(sticker.pasted).toUpperCase() === 'TRUE' || String(sticker.pasted) === '1',
     duplicates: Math.max(0, Number(sticker.duplicates || 0)),
     updatedAt: String(sticker.updatedAt || new Date().toISOString()),
