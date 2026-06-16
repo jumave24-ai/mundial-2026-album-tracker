@@ -4,9 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#14532d" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Álbum Mundial 2026</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest?v=5" />
+  <link rel="icon" href="icon.svg?v=5" type="image/svg+xml" />
   <style>
     :root {
       --bg: #f5f7f5;
@@ -597,8 +600,8 @@
   <iframe name="hiddenSaveFrame" id="hiddenSaveFrame" style="display:none"></iframe>
 
   <script>
-    const APP_VERSION = 'v4-official-codes';
-    const STORAGE_KEY = 'wc26_album_tracker_state_v4';
+    const APP_VERSION = 'v5-simple-no-cache';
+    const STORAGE_KEY = 'wc26_album_tracker_state_v5';
     const OLD_STORAGE_KEYS = ['wc26_album_tracker_state_v3', 'wc26_album_tracker_state_v2', 'wc26_album_tracker_state'];
     const DEFAULT_TOTAL = 980;
     const DEFAULT_PAD = 3;
@@ -864,7 +867,7 @@
       const s = stats();
       byId('appTitle').textContent = state.title || 'Álbum Mundial 2026';
       byId('appSubtitle').textContent = `${s.pasted} de ${s.total} base · ${s.bonusPasted}/${s.bonusTotal} Coca-Cola · ${s.duplicates} repetidas`;
-      byId('syncBadge').textContent = state.apiUrl ? (state.editorPin ? 'Compartido + edición · v4' : 'Compartido lectura · v4') : 'Local · v4';
+      byId('syncBadge').textContent = state.apiUrl ? (state.editorPin ? 'Compartido + edición · v5 simple' : 'Compartido lectura · v5 simple') : 'Local · v5 simple';
       byId('statPasted').textContent = `${s.pasted}/${s.total}`;
       byId('statMissing').textContent = s.missing;
       byId('statDuplicates').textContent = s.duplicates;
@@ -1442,8 +1445,21 @@
       bindEvents();
       render();
       if (state.apiUrl) loadRemote();
+      // v5 simple: no service worker. This avoids the phone getting stuck on an old version.
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js?v=4').catch(console.warn);
+        navigator.serviceWorker.getRegistrations()
+          .then(registrations => {
+            const here = new URL('./', location.href).href;
+            registrations
+              .filter(reg => reg.scope && reg.scope.startsWith(here))
+              .forEach(reg => reg.unregister());
+          })
+          .catch(console.warn);
+      }
+      if ('caches' in window) {
+        caches.keys()
+          .then(keys => Promise.all(keys.filter(k => k.startsWith('wc26-album-tracker')).map(k => caches.delete(k))))
+          .catch(console.warn);
       }
     }
 
